@@ -1,6 +1,6 @@
 package com.epam.fw.services;
 
-import static com.epam.onliner.data.ConstantData.*;
+import static com.epam.fw.data.ConstantData.*;
 import java.util.Date;
 import org.apache.log4j.Logger;
 import com.epam.fw.object.Options;

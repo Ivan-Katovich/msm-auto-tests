@@ -1,0 +1,29 @@
+package com.epam.fw.data;
+
+import java.util.ResourceBundle;
+
+import com.epam.fw.object.MyElement;
+
+public final class ConstantData {
+	
+	//property file
+//	private static ResourceBundle dataFile = ResourceBundle.getBundle("prop");
+	
+	//uri
+	public static final String BASE_URI = "http://www.sit1.gb.travelsupermarket.com";
+	
+	//seleniun grid
+	public static final String SELENIUM_HOST_MOSVM = "10.6.131.33";
+	public static final String SELENIUM_HOST_LOCAL = "localhost";
+	public static final String SELENIUM_HOST_HOME = "192.168.0.101";
+	public static final String SELENIUM_PORT = "4444";
+	
+	//elements
+//	public static final MyElement TOP_LOGO = new MyElement("topLogo", "//img[@class='onliner_logo retina-off']", "webelement");
+	
+	//timeout
+	public static final int TIME_OUT = 15000;
+	public static final int POOLING = 2000;
+	
+
+}

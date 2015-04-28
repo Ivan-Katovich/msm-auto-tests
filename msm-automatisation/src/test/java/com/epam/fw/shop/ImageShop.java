@@ -10,7 +10,7 @@ import com.epam.fw.object.MyImage;
 import com.epam.fw.services.ImageServices;
 import com.epam.fw.services.MultiServices;
 
-import static com.epam.onliner.data.ConstantData.*;
+import static com.epam.fw.data.ConstantData.*;
 
 public class ImageShop extends Shop {
 	

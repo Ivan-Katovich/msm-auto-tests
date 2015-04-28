@@ -1,6 +1,6 @@
 package com.epam.fw.services;
 
-import static com.epam.onliner.data.ConstantData.TIME_OUT;
+import static com.epam.fw.data.ConstantData.TIME_OUT;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

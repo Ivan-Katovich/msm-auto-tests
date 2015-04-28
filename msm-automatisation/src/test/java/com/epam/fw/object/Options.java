@@ -13,7 +13,7 @@ import com.epam.fw.services.MultiServices;
 import com.epam.fw.services.WebElementsServices;
 import com.epam.fw.shop.WebElementsShop;
 
-import static com.epam.onliner.data.ConstantData.*;
+import static com.epam.fw.data.ConstantData.*;
 
 public class Options {
 	

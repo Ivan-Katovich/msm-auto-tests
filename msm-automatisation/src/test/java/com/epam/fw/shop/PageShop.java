@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import com.epam.fw.object.Options;
 import com.epam.fw.services.MultiServices;
 import com.epam.fw.services.PageServices;
-import com.epam.onliner.pages.*;
+import com.epam.environment.pages.*;
 
-import static com.epam.onliner.data.ConstantData.*;
+import static com.epam.fw.data.ConstantData.*;
 
 public class PageShop extends Shop{
 	
