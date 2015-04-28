@@ -26,5 +26,11 @@ public class PageServices {
 		}
 		
 	}
+	
+	public static String urlCreator(Options options) {
+		log.info("enter to function getPageUrl");
+		String uri = BASE_URI+options.getUri();
+		return uri;
+	}
 
 }

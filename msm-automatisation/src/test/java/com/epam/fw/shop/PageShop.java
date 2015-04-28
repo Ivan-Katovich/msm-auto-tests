@@ -17,7 +17,8 @@ public class PageShop extends Shop{
 	public static void goToPage(String uri, WebDriver driver) {
 		log.info("enter to function goToPage with URL '" + uri + "'");
 		options.setDriver(driver);
-		driver.get(uri);
+		options.setUri(uri);
+		driver.get(PageServices.urlCreator(options));
 		if (PageServices.waitForPageLoaded(options)) {
 			log.info("Page was loaded");
 		} else {
