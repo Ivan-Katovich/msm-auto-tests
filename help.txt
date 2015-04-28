@@ -1,0 +1,15 @@
+1. Clone framework from git repository.
+2. Import OnlinerTest folder into eclipse as maven project 
+3. Execute "
+ mvn install:install-file 
+-Dfile=additional_libraries/sikuli-java.jar 
+-DgroupId=org.sikuli 
+-DartifactId=sikulijava 
+-Dversion=1.0.1 
+-Dpackaging=jar 
+-DgeneratePom=true
+" in console in one row 
+4. Execute test with Image checking. 
+The test will be failed, but sikuli will write path to libraries to the system path.
+5. Restart your computer. Image checking doesn't work without this step.
+(May be another way exists, but I don't know it)
