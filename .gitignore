@@ -1,7 +1,9 @@
-OnlinerTest/.settings/
-OnlinerTest/target/
-OnlinerTest/src/test/resources/screenshots/
+msm-automatisation/.settings/
+msm-automatisation/.idea/
+msm-automatisation/target/
+msm-automatisation/src/test/resources/screenshots/
 .classpath
+msm-automatisation/MoneySuperMarket.iml
 .project
 .metadata/
 Prob/
