@@ -32,6 +32,24 @@ public class FieldsShop extends Shop {
 				FieldsServices.selectDropdownMenu(options);
 				log.info("Dropdown option is selected");
 				break;
+			case "button":
+				if (value == "click") {
+					WebElementsShop.clickOnElement(myElement, driver);
+				}
+				break;
+			case "radio":
+				FieldsServices.selectDropdownMenu(options);
+				log.info("Dropdown option is selected");
+				break;
+			case "checkbox":
+				if (value == "click") {
+					WebElementsShop.clickOnElement(myElement, driver);
+				}
+			case "datepicker":
+				WebElementsShop.clickOnElement(myElement, driver);
+				FieldsServices.selectDate(options);
+				log.info("Dropdown option is selected");
+				break;
 			default:
 				log.error("element is not field type" );
 			}

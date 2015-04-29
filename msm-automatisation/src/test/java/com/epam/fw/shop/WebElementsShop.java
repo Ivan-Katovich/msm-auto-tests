@@ -62,7 +62,7 @@ public class WebElementsShop extends Shop{
     		log.error("Element '" + myElement.getName() + "' is not visible, shutdown" );
     		MultiServices.errorShutdown(options);
     	} else {
-    		String text = WebElementsServices.getElementText(options);
+    		String text = WebElementsServices.getElementText(options).replace("\n", " ");
     		if (text == null || !text.equals(expectedText)) {
     			log.error("Element '" + myElement.getName() + "' has text '" + text + "' but expexted '" + expectedText + "' shutdown");
     			MultiServices.errorShutdown(options);

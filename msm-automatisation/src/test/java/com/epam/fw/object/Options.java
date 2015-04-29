@@ -20,12 +20,14 @@ public class Options {
 	private WebDriver driver;
 	private WebElement webElement;
 	private String uri;
+	private String items;
 	private int timeout = TIME_OUT;
 	private int pooling = POOLING;
 	private By selector;
 	private Pattern pattern;
 	private Screen screen = new Screen();
 	private MyElement myElement;
+	private MyElement childElement;
 	private MyImage myImage;
 	private String text;
 	private String name;
@@ -160,6 +162,22 @@ public class Options {
 
 	public void setNumber(Integer number) {
 		this.number = number;
+	}
+
+	public String getItems() {
+		return items;
+	}
+
+	public void setItems(String items) {
+		this.items = items;
+	}
+
+	public MyElement getChildElement() {
+		return childElement;
+	}
+
+	public void setChildElement(MyElement childElement) {
+		this.childElement = childElement;
 	}
 	
 	

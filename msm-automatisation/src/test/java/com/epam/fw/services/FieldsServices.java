@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import com.epam.fw.object.MyElement;
 import com.epam.fw.object.Options;
 
 public class FieldsServices {
@@ -16,18 +17,14 @@ public class FieldsServices {
 	public static void selectDropdownMenu(Options options) {
 		log.info("enter to function selectDropdownMenu in fields services with element '" + options.getMyElement().getName() + "'");
 		try {
-			if (!WebElementsServices.waitElementIsVisible(options)) {
-				log.error("No such field on this page");
+			By valueSelector = By.xpath(options.getMyElement().getXpath() + "//*[text()='" + options.getText() + "']");
+			log.info(valueSelector.toString());
+			options.setSelector(valueSelector);
+			if (!WebElementsServices.waitElementIsPresent(options)) {
+				log.error("No such value in this field");
 				MultiServices.errorShutdown(options);
 			} else {
-				By valueSelector = By.xpath(options.getMyElement().getXpath() + "//*[text()='" + options.getText() + "']");
-				options.setSelector(valueSelector);
-				if (!WebElementsServices.waitElementIsPresent(options)) {
-					log.error("No such value in this field");
-					MultiServices.errorShutdown(options);
-				} else {
-					options.getDriver().findElement(options.getSelector()).click();
-				}
+				options.getDriver().findElement(options.getSelector()).click();
 			}
 //			Select sel = new Select(options.getDriver().findElement(options.getSelector()));
 //			sel.selectByVisibleText(options.getText());
@@ -36,6 +33,60 @@ public class FieldsServices {
 			log.error("Something wrong" + e.getClass());
 			MultiServices.errorShutdown(options);
 		}
+	}
+	
+	public static void selectRadiobutton(Options options) {
+		log.info("enter to function selectRadiobutton in fields services with element '" + options.getMyElement().getName() + "'");
+		try {
+			By valueSelector = By.xpath(options.getMyElement().getXpath() + "//*[text()='" + options.getText() + "']/preceding-sibling::input");
+			options.setSelector(valueSelector);
+			if (!WebElementsServices.waitElementIsPresent(options)) {
+				log.error("No such radiobutton");
+				MultiServices.errorShutdown(options);
+			} else {
+				options.getDriver().findElement(options.getSelector()).click();
+			}
+			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
+		} catch (Exception e) {
+			log.error("Something wrong" + e.getClass());
+			MultiServices.errorShutdown(options);
+		}
+	}
+	
+	public static void selectDate(Options options) {
+		log.info("enter to function selectDate in fields services with element '" + options.getMyElement().getName() + "'");
+		try {
+			String[] items = options.getText().split(" ");
+			String thisXpath = options.getMyElement().getXpath();
+			options.getMyElement().setName("year");
+			options.getMyElement().setType("dropdown");
+			options.getMyElement().setXpath(thisXpath+"/following-sibling::div//select[contains(@class,'year')]");
+			options.setText(items[2]);
+			selectDropdownMenu(options);
+			options.getMyElement().setName("month");
+			options.getMyElement().setType("dropdown");
+			options.getMyElement().setXpath(thisXpath+"/following-sibling::div//select[contains(@class,'month')]");
+			options.setText(items[1]);
+			selectDropdownMenu(options);
+			By valueSelector = By.xpath(thisXpath+"/following-sibling::div//*[text()='" + items[0] + "']");
+			options.setSelector(valueSelector);
+			if (!WebElementsServices.waitElementIsPresent(options)) {
+				log.error("No such element");
+				MultiServices.errorShutdown(options);
+			} else {				
+				try {
+					options.getDriver().findElement(valueSelector).click();
+				} catch (Exception e) {
+					log.error("Something wrong" + e.getClass());
+				}
+			}
+			log.info("Complete date picker '" + options.getMyElement().getName() + "' with value " + items[0]+" "+items[1]+" "+items[2]);
+		} catch (Exception e) {
+			log.error("Something wrong" + e.getClass());
+			MultiServices.errorShutdown(options);
+		}
+		
+		
 	}
 	
 	public static void sendTextToField(Options options) {

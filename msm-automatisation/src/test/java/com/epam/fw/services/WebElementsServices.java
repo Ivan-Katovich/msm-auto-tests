@@ -284,5 +284,20 @@ public class WebElementsServices {
     		return null;
     	}
     }
+    
+    public static boolean executeJavascript(Options options, String script) {
+    	log.info("enter to function executeJavascript");
+    	try {
+    		JavascriptExecutor executor = (JavascriptExecutor) options.getDriver();
+    		log.info("Try to execute script: " + script);
+    		executor.executeScript(
+    				script
+    				);
+    		return true;
+    	} catch (Exception e) {
+    		log.error("Something wrong " + e.getClass());
+    		return false;
+    	}
+    }
      
 }

@@ -15,9 +15,28 @@ public class PageShop extends Shop{
 	private static final Logger log = Logger.getLogger(PageShop.class);
 	
 	public static void goToPage(String uri, WebDriver driver) {
-		log.info("enter to function goToPage with URL '" + uri + "'");
 		options.setDriver(driver);
 		options.setUri(uri);
+		String fullUri = PageServices.urlCreator(options);
+		if (fullUri == null) {
+			log.error("URL is not defined");
+			MultiServices.errorShutdown(options);
+		}
+		log.info("enter to function goToPage with URL '" +fullUri + "'");
+		driver.get(fullUri);
+		if (PageServices.waitForPageLoaded(options)) {
+			log.info("Page was loaded");
+		} else {
+			log.error("page didn't load");
+			MultiServices.errorShutdown(options);
+		}
+	}
+	
+	public static void goToPage(String uri, String items, WebDriver driver) {
+		options.setDriver(driver);
+		options.setUri(uri);
+		options.setItems(items);
+		log.info("enter to function goToPage with URL '" + PageServices.urlCreator(options) + "'");
 		driver.get(PageServices.urlCreator(options));
 		if (PageServices.waitForPageLoaded(options)) {
 			log.info("Page was loaded");

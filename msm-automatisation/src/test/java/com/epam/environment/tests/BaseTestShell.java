@@ -28,7 +28,7 @@ public class BaseTestShell {
 //		driver = new RemoteWebDriver(gridHost, capability);
 		driver = new FirefoxDriver();
 //	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	    driver.manage().deleteAllCookies();
+//	    driver.manage().deleteAllCookies();
 	}
 	
 	@AfterClass
