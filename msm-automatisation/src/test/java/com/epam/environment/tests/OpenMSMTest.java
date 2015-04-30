@@ -30,7 +30,7 @@ public class OpenMSMTest extends BaseTestShell{
 		log.info("SuperhomePage was created");
 		superHomePage.checkSuperHomePageContentSGF();
 		superHomePage.fillFlightsFormByMinimumProfile();
-		flightsResultsPage = (FlightsResultsPage)superHomePage.goToFlightsResultsPageWithMinimumProfile();
+		flightsResultsPage = superHomePage.goToFlightsResultsPageWithMinimumProfile();
 	}
 	
 	

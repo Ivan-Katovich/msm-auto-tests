@@ -5,8 +5,10 @@ import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.touch.FlickAction;
 
 import com.epam.environment.pages.channels.ChannelPage;
+import com.epam.environment.pages.channels.FlightsResultsPage;
 import com.epam.fw.object.MyElement;
 import com.epam.fw.services.WebElementsServices;
 import com.epam.fw.shop.FieldsShop;
@@ -18,7 +20,7 @@ public class SuperHomePage extends Page {
 	private static final Logger log = Logger.getLogger(SuperHomePage.class);
 	
 	//url items
-	protected static final String uri = "/beta/content/travelsupermarket/en_gb/superhomepage/";
+	protected static final String uri = "/beta/";
 	protected static final String items = "?searchGadgetForm=true";
 	
 	//elements
@@ -90,10 +92,10 @@ public class SuperHomePage extends Page {
 		FieldsShop.fillFormByProfile(minimumFlightsProfile, driver);
 	}
 	
-	public ChannelPage goToFlightsResultsPageWithMinimumProfile() {
+	public FlightsResultsPage goToFlightsResultsPageWithMinimumProfile() {
 		WebElementsShop.clickOnElement(flyingSearchButton, driver);
 		PageShop.waitForPage(driver);
-		return new ChannelPage(driver);
+		return new FlightsResultsPage(driver);
 	}
 	
 	
