@@ -17,7 +17,11 @@ public class FieldsServices {
 	public static void selectDropdownMenu(Options options) {
 		log.info("enter to function selectDropdownMenu in fields services with element '" + options.getMyElement().getName() + "'");
 		try {
-			By valueSelector = By.xpath(options.getMyElement().getXpath() + "//*[text()='" + options.getText() + "']");
+//			options.getDriver().findElement(By.xpath(options.getMyElement().getXpath())).click();
+//			options.getDriver().findElement(By.xpath(options.getMyElement().getXpath())).sendKeys(options.getText());
+//			options.getDriver().findElement(By.xpath(options.getMyElement().getXpath())).click();
+//			Thread.sleep(1000);
+			By valueSelector = By.xpath(options.getMyElement().getXpath() + "//option[text()='" + options.getText() + "']");
 			log.info(valueSelector.toString());
 			options.setSelector(valueSelector);
 			if (!WebElementsServices.waitElementIsPresent(options)) {
@@ -26,8 +30,24 @@ public class FieldsServices {
 			} else {
 				options.getDriver().findElement(options.getSelector()).click();
 			}
-//			Select sel = new Select(options.getDriver().findElement(options.getSelector()));
+//			Select sel = new Select(options.getDriver().findElement(By.xpath(options.getMyElement().getXpath())));
+//			sel.deselectAll();
 //			sel.selectByVisibleText(options.getText());
+			
+			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
+		} catch (Exception e) {
+			log.error("Something wrong" + e.getClass());
+			MultiServices.errorShutdown(options);
+		}
+	}
+	
+	public static void selectAltDropdownMenu(Options options) {
+		log.info("enter to function selectAltDropdownMenu in fields services with element '" + options.getMyElement().getName() + "'");
+		try {
+//			options.getDriver().findElement(By.xpath(options.getMyElement().getXpath())).click();
+			options.getDriver().findElement(options.getSelector()).sendKeys(options.getText());
+//			options.getDriver().findElement(By.xpath(options.getMyElement().getXpath())).click();
+//			Thread.sleep(1000);
 			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 		} catch (Exception e) {
 			log.error("Something wrong" + e.getClass());
@@ -38,7 +58,7 @@ public class FieldsServices {
 	public static void selectRadiobutton(Options options) {
 		log.info("enter to function selectRadiobutton in fields services with element '" + options.getMyElement().getName() + "'");
 		try {
-			By valueSelector = By.xpath(options.getMyElement().getXpath() + "//*[text()='" + options.getText() + "']/preceding-sibling::input");
+			By valueSelector = By.xpath(options.getMyElement().getXpath() + "//*[text()='" + options.getText() + "']");
 			options.setSelector(valueSelector);
 			if (!WebElementsServices.waitElementIsPresent(options)) {
 				log.error("No such radiobutton");
@@ -62,12 +82,14 @@ public class FieldsServices {
 			options.getMyElement().setType("dropdown");
 			options.getMyElement().setXpath(thisXpath+"/following-sibling::div//select[contains(@class,'year')]");
 			options.setText(items[2]);
+			log.info(thisXpath+"/following-sibling::div//select[contains(@class,'year')]");
 			selectDropdownMenu(options);
 			options.getMyElement().setName("month");
 			options.getMyElement().setType("dropdown");
 			options.getMyElement().setXpath(thisXpath+"/following-sibling::div//select[contains(@class,'month')]");
 			options.setText(items[1]);
 			selectDropdownMenu(options);
+			options.getMyElement().setName("day");
 			By valueSelector = By.xpath(thisXpath+"/following-sibling::div//*[text()='" + items[0] + "']");
 			options.setSelector(valueSelector);
 			if (!WebElementsServices.waitElementIsPresent(options)) {

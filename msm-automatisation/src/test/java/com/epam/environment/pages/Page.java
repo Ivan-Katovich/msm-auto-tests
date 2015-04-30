@@ -6,7 +6,7 @@ import org.sikuli.script.Pattern;
 import com.epam.fw.object.MyElement;
 import com.epam.fw.object.MyImage;
 
-public abstract class Page {
+public class Page {
 	
 	
 	protected final WebDriver driver;

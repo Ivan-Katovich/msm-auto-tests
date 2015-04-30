@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.epam.environment.pages.SuperHomePage;
+import com.epam.environment.pages.channels.ChannelPage;
+import com.epam.environment.pages.channels.FlightsResultsPage;
 import com.epam.environment.tests.BaseTestShell;
 
 
@@ -13,6 +15,7 @@ public class OpenMSMTest extends BaseTestShell{
 	
 	private static final Logger log = Logger.getLogger(OpenMSMTest.class);
 	private static SuperHomePage superHomePage;
+	private static FlightsResultsPage flightsResultsPage;
 	
 	@Before
 	public void startTest() {
@@ -22,10 +25,12 @@ public class OpenMSMTest extends BaseTestShell{
 	}
 	
 	@Test
-	public void fillFilterFormTest() throws InterruptedException {
+	public void fillFilterFormTest() {
 		superHomePage = SuperHomePage.goToSuperHomePage(driver);
 		log.info("SuperhomePage was created");
 		superHomePage.checkSuperHomePageContentSGF();
+		superHomePage.fillFlightsFormByMinimumProfile();
+		flightsResultsPage = (FlightsResultsPage)superHomePage.goToFlightsResultsPageWithMinimumProfile();
 	}
 	
 	

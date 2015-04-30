@@ -32,6 +32,18 @@ public class PageShop extends Shop{
 		}
 	}
 	
+	public static void waitForPage(WebDriver driver) {
+		options.setDriver(driver);		
+		String actualUri = PageServices.getPageCurrentUrl(options);
+		options.setUri(actualUri);
+		if (PageServices.waitForPageLoaded(options)) {
+			log.info("Page was loaded");
+		} else {
+			log.error("page didn't load");
+			MultiServices.errorShutdown(options);
+		}
+	}
+	
 	public static void goToPage(String uri, String items, WebDriver driver) {
 		options.setDriver(driver);
 		options.setUri(uri);
