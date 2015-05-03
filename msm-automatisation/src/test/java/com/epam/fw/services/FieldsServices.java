@@ -26,6 +26,7 @@ public class FieldsServices {
 			options.setSelector(valueSelector);
 			if (!WebElementsServices.waitElementIsPresent(options)) {
 				log.error("No such value in this field");
+				options.setErrorMessage("No such value in this field");
 				MultiServices.errorShutdown(options);
 			} else {
 				options.getDriver().findElement(options.getSelector()).click();
@@ -37,6 +38,7 @@ public class FieldsServices {
 			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 		} catch (Exception e) {
 			log.error("Something wrong" + e.getClass());
+			options.setErrorMessage("Something wrong" + e.getClass());
 			MultiServices.errorShutdown(options);
 		}
 	}
@@ -51,6 +53,7 @@ public class FieldsServices {
 			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 		} catch (Exception e) {
 			log.error("Something wrong" + e.getClass());
+			options.setErrorMessage("Something wrong" + e.getClass());
 			MultiServices.errorShutdown(options);
 		}
 	}
@@ -62,6 +65,7 @@ public class FieldsServices {
 			options.setSelector(valueSelector);
 			if (!WebElementsServices.waitElementIsPresent(options)) {
 				log.error("No such radiobutton");
+				options.setErrorMessage("No such radiobutton");
 				MultiServices.errorShutdown(options);
 			} else {
 				options.getDriver().findElement(options.getSelector()).click();
@@ -69,6 +73,7 @@ public class FieldsServices {
 			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 		} catch (Exception e) {
 			log.error("Something wrong" + e.getClass());
+			options.setErrorMessage("Something wrong" + e.getClass());
 			MultiServices.errorShutdown(options);
 		}
 	}
@@ -94,6 +99,7 @@ public class FieldsServices {
 			options.setSelector(valueSelector);
 			if (!WebElementsServices.waitElementIsPresent(options)) {
 				log.error("No such element");
+				options.setErrorMessage("No such element");
 				MultiServices.errorShutdown(options);
 			} else {				
 				try {
@@ -105,6 +111,7 @@ public class FieldsServices {
 			log.info("Complete date picker '" + options.getMyElement().getName() + "' with value " + items[0]+" "+items[1]+" "+items[2]);
 		} catch (Exception e) {
 			log.error("Something wrong" + e.getClass());
+			options.setErrorMessage("Something wrong" + e.getClass());
 			MultiServices.errorShutdown(options);
 		}
 		
@@ -115,6 +122,7 @@ public class FieldsServices {
 		log.info("enter to function sendTextToField in fields services");
 		if (options.getText().equals("")) {
 			log.warn("Text is not entered");
+			options.setErrorMessage("Text is not entered");
 			MultiServices.errorShutdown(options);
 		} else {
 			try {
@@ -123,6 +131,7 @@ public class FieldsServices {
 				log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 			} catch (NoSuchElementException e) {
 				log.error("Something wrong " + e.getClass());
+				options.setErrorMessage("Something wrong " + e.getClass());
 				MultiServices.errorShutdown(options);
 			}
 			

@@ -19,8 +19,9 @@ public class MultiServices {
 	public static void errorShutdown(Options options) {
 		log.info("enter to function errorShutdown");
 		getMyScreenshot(options);
+		org.junit.Assert.assertTrue(options.getErrorMessage(),false);
 //		options.getDriver().quit();
-		Thread.currentThread().stop();;
+//		Thread.currentThread().stop();
 	}
 	
 	public static void getMyScreenshot(Options options) {

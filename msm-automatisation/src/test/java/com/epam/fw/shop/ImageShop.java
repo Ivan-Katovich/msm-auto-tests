@@ -24,6 +24,7 @@ public class ImageShop extends Shop {
 			log.info("image '" + image.getName() + "' was found ");
 		} else {
 			log.error("can't find image " + image.getName() + "'");
+			options.setErrorMessage("can't find image " + image.getName() + "'");
 			MultiServices.errorShutdown(options);
 		}
 	}

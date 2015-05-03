@@ -1,4 +1,4 @@
-package com.epam.environment.pages;
+package com.epam.environment.stepDefinition;
 
 import org.openqa.selenium.WebDriver;
 import org.sikuli.script.Pattern;

@@ -64,9 +64,12 @@ public class FieldsShop extends Shop {
 				break;	
 			default:
 				log.error("element is not field type" );
+				options.setErrorMessage("element is not field type");
+				MultiServices.errorShutdown(options);
 			}
 		} else {
 			log.error("element is not visible" );
+			options.setErrorMessage("element is not visible");
 			MultiServices.errorShutdown(options);
 		}
     }
