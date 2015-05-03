@@ -1,20 +1,25 @@
-package com.epam.environment.tests;
-
-import static com.epam.fw.data.ConstantData.*;
-
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
+package com.epam.environment.cucumberTests;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.epam.environment.pages.Page;
-
-public class BaseTestShell {
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+ 
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		features = "features"
+		,glue="com/epam/environment/stepDefinition"
+		,monochrome = true
+		,tags = {}
+		,format = {"pretty","html:reports"}
+//		,dryRun = true
+		)
+ 
+public class TestRunner {
 	
 	protected static WebDriver driver;
 //	protected static Page page;
@@ -28,7 +33,7 @@ public class BaseTestShell {
 //		driver = new RemoteWebDriver(gridHost, capability);
 		driver = new FirefoxDriver();
 //	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//	    driver.manage().deleteAllCookies();
+//	    driver.manage().window().maximize();
 	}
 	
 	@AfterClass
@@ -41,5 +46,5 @@ public class BaseTestShell {
 //	    Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");
 //	    Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
 	}
-
+ 
 }

@@ -32,6 +32,7 @@ public class Options {
 	private String text;
 	private String name;
 	private Integer number;
+	private String errorMessage;
 	private static final Logger log = Logger.getLogger(Options.class);
 	
 	public Options() {}
@@ -178,6 +179,14 @@ public class Options {
 
 	public void setChildElement(MyElement childElement) {
 		this.childElement = childElement;
+	}
+
+	public String getErrorMessage() {
+		return errorMessage;
+	}
+
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 	}
 	
 	

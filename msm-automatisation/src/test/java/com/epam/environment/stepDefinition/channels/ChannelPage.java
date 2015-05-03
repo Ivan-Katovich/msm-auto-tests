@@ -1,8 +1,8 @@
-package com.epam.environment.pages.channels;
+package com.epam.environment.stepDefinition.channels;
 
 import org.openqa.selenium.WebDriver;
 
-import com.epam.environment.pages.Page;
+import com.epam.environment.stepDefinition.Page;
 
 public class ChannelPage extends Page{
 	

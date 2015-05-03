@@ -1,21 +1,26 @@
-package com.epam.environment.pages;
+package com.epam.environment.stepDefinition;
 
 
 import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.touch.FlickAction;
 
-import com.epam.environment.pages.channels.ChannelPage;
-import com.epam.environment.pages.channels.FlightsResultsPage;
+import com.epam.environment.cucumberTests.TestRunner;
+import com.epam.environment.stepDefinition.channels.ChannelPage;
+import com.epam.environment.stepDefinition.channels.FlightsResultsPage;
 import com.epam.fw.object.MyElement;
 import com.epam.fw.services.WebElementsServices;
 import com.epam.fw.shop.FieldsShop;
 import com.epam.fw.shop.PageShop;
 import com.epam.fw.shop.WebElementsShop;
 
-public class SuperHomePage extends Page {
+import cucumber.api.java.en.*;
+
+public class SuperHomePage extends TestRunner {
 	
 	private static final Logger log = Logger.getLogger(SuperHomePage.class);
 	
@@ -66,37 +71,61 @@ public class SuperHomePage extends Page {
 	}};
 	
 	
+//	public SuperHomePage(WebDriver driver) {
+//		super(driver);
+//	}
 	
-	public SuperHomePage(WebDriver driver) {
-		super(driver);
-	}
-	
-	public static SuperHomePage goToSuperHomePage(WebDriver driver) {
+	@Given("^I am on SuperHomePage$")
+	public void goToSuperHomePage() {
 		PageShop.goToPage(uri, items, driver);
-		return new SuperHomePage(driver);
 	}
 	
-	public void checkSuperHomePageContentSGF() {
+	@Then("^I sould see elements: search gadget, main logo$")
+	public void checkTheSuperHomePageMainElementsVisibility() {
 		WebElementsShop.assertElementVisible(searchGadgetForm, driver);
 		WebElementsShop.assertElementVisible(mainLogo, driver);
-		WebElementsShop.assertElementHasText(mainTitle, "Leave London behind Where do you want to go today?", driver);
-		WebElementsShop.assertElementHasText(carHireFormButton, "Car Hire", driver);
-		WebElementsShop.assertElementHasText(flightsFormButton, "Flights", driver);
-		WebElementsShop.assertElementHasText(holidaysFormButton, "Holidays", driver);
-		WebElementsShop.assertElementHasText(hotelsFormButton, "Hotels", driver);
-		WebElementsShop.assertElementHasText(insuranceFormButton, "Insurance", driver);	
 	}
 	
-	public void fillFlightsFormByMinimumProfile() {
-		WebElementsShop.clickOnElement(flightsFormButton, driver);
-		FieldsShop.fillFormByProfile(minimumFlightsProfile, driver);
+	@Then("^I sould see following text of the SuperHomePage main title: '(.+)'$")
+	public void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
+		WebElementsShop.assertElementHasText(mainTitle, text, driver);
 	}
 	
-	public FlightsResultsPage goToFlightsResultsPageWithMinimumProfile() {
-		WebElementsShop.clickOnElement(flyingSearchButton, driver);
-		PageShop.waitForPage(driver);
-		return new FlightsResultsPage(driver);
+	@Then("^I sould see following search gadget buttons: '(.+)', '(.+)', '(.+)', '(.+)', '(.+)'$")
+	public void checkTheSuperHomePageElementsText(String text1, String text2, String text3, String text4, String text5) throws Throwable {
+		WebElementsShop.assertElementHasText(holidaysFormButton, text1, driver);
+		WebElementsShop.assertElementHasText(flightsFormButton, text2, driver);
+		WebElementsShop.assertElementHasText(carHireFormButton, text3, driver);
+		WebElementsShop.assertElementHasText(hotelsFormButton, text4, driver);
+		WebElementsShop.assertElementHasText(insuranceFormButton, text5, driver);	
 	}
+	
+//	public static SuperHomePage goToSuperHomePage(WebDriver driver) {
+//		PageShop.goToPage(uri, items, driver);
+//		return new SuperHomePage(driver);
+//	}
+//	
+//	public void checkSuperHomePageContentSGF() {
+//		WebElementsShop.assertElementVisible(searchGadgetForm, driver);
+//		WebElementsShop.assertElementVisible(mainLogo, driver);
+//		WebElementsShop.assertElementHasText(mainTitle, "Leave London behind Where do you want to go today?", driver);
+//		WebElementsShop.assertElementHasText(carHireFormButton, "Car Hire", driver);
+//		WebElementsShop.assertElementHasText(flightsFormButton, "Flights", driver);
+//		WebElementsShop.assertElementHasText(holidaysFormButton, "Holidays", driver);
+//		WebElementsShop.assertElementHasText(hotelsFormButton, "Hotels", driver);
+//		WebElementsShop.assertElementHasText(insuranceFormButton, "Insurance", driver);	
+//	}
+//	
+//	public void fillFlightsFormByMinimumProfile() {
+//		WebElementsShop.clickOnElement(flightsFormButton, driver);
+//		FieldsShop.fillFormByProfile(minimumFlightsProfile, driver);
+//	}
+//	
+//	public FlightsResultsPage goToFlightsResultsPageWithMinimumProfile() {
+//		WebElementsShop.clickOnElement(flyingSearchButton, driver);
+//		PageShop.waitForPage(driver);
+//		return new FlightsResultsPage(driver);
+//	}
 	
 	
 

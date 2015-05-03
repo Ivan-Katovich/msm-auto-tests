@@ -25,6 +25,7 @@ public class WebElementsShop extends Shop{
 			log.info("element '" + myElement.getName() + "' is visible" );
 		} else {
 			log.error("element '" + myElement.getName() + "' is not visible shutdown" );
+			options.setErrorMessage("element '" + myElement.getName() + "' is not visible shutdown" );
 			MultiServices.errorShutdown(options);
 		}
 	}
@@ -37,6 +38,7 @@ public class WebElementsShop extends Shop{
 			log.info("element '" + myElement.getName() + "' is present" );
 		} else {
 			log.error("element '" + myElement.getName() + "' is not present shutdown" );
+			options.setErrorMessage("element '" + myElement.getName() + "' is not present shutdown" );
 			MultiServices.errorShutdown(options);
 		}
 	}
@@ -49,7 +51,8 @@ public class WebElementsShop extends Shop{
 			log.info("visible true");
 			driver.findElement(options.getSelector()).click();
 		} else {
-			log.info("visible false shutdown");
+			log.error("couldn't click on the element '" + myElement.getName() + "'");
+			options.setErrorMessage("couldn't click on the element '" + myElement.getName() + "'");
 			MultiServices.errorShutdown(options);
 		}
 	}
@@ -60,11 +63,13 @@ public class WebElementsShop extends Shop{
 		options.setMyElement(myElement);
     	if (!WebElementsServices.waitElementIsVisible(options)) {
     		log.error("Element '" + myElement.getName() + "' is not visible, shutdown" );
+    		options.setErrorMessage("Element '" + myElement.getName() + "' is not visible, shutdown");
     		MultiServices.errorShutdown(options);
     	} else {
     		String text = WebElementsServices.getElementText(options).replace("\n", " ");
     		if (text == null || !text.equals(expectedText)) {
     			log.error("Element '" + myElement.getName() + "' has text '" + text + "' but expexted '" + expectedText + "' shutdown");
+    			options.setErrorMessage("Element '" + myElement.getName() + "' has text '" + text + "' but expexted '" + expectedText + "' shutdown");
     			MultiServices.errorShutdown(options);
     		} else {
     			log.info("Element '" + myElement.getName() + "' has text '" + text + "' expexted '" + expectedText);
@@ -78,11 +83,13 @@ public class WebElementsShop extends Shop{
 		options.setMyElement(myElement);
     	if (!WebElementsServices.waitElementIsVisible(options)) {
     		log.error("Element '" + myElement.getName() + "' is not visible, shutdown" );
+    		options.setErrorMessage("Element '" + myElement.getName() + "' is not visible, shutdown");
     		MultiServices.errorShutdown(options);
     	} else {
     		String text = WebElementsServices.getElementText(options);
     		if (text == null || text.indexOf(expectedText) == -1) {
     			log.error("Element '" + myElement.getName() + "' has text '" + text + "' not contains '" + expectedText + "' shutdown");
+    			options.setErrorMessage("Element '" + myElement.getName() + "' has text '" + text + "' not contains '" + expectedText + "' shutdown");
     			MultiServices.errorShutdown(options);
     		} else {
     			log.info("Element '" + myElement.getName() + "' has text '" + text + "' contains '" + expectedText);
@@ -97,11 +104,13 @@ public class WebElementsShop extends Shop{
 		options.setName(attributeName);
 		if (!WebElementsServices.waitElementIsVisible(options)) {
     		log.error("Element '" + myElement.getName() + "' is not visible, shutdown" );
+    		options.setErrorMessage("Element '" + myElement.getName() + "' is not visible, shutdown");
     		MultiServices.errorShutdown(options);
     	} else {
     		String value = WebElementsServices.getAttributeValue(options);
     		if (value == null || !value.equals(attributeValue)) {
     			log.error("Element '" + myElement.getName() + "' has attribute '" + attributeName + "' with value '" + value + "' but expexted value '" + attributeValue + "' shutdown");
+    			options.setErrorMessage("Element '" + myElement.getName() + "' has attribute '" + attributeName + "' with value '" + value + "' but expexted value '" + attributeValue + "' shutdown");
     			MultiServices.errorShutdown(options);
     		} else {
     			log.info("Element '" + myElement.getName() + "' has attribute '" + attributeName + "' with value '" + value + "' expexted value '" + attributeValue);
@@ -117,6 +126,7 @@ public class WebElementsShop extends Shop{
 		options.setText(attributeValue);
 		if (!WebElementsServices.waitElementIsVisible(options)) {
     		log.error("Element " + myElement.getName() + " is not visible shutdown" );
+    		options.setErrorMessage("Element " + myElement.getName() + " is not visible shutdown");
     		MultiServices.errorShutdown(options);
 		} else {
 			if (WebElementsServices.setAttributeValue(options)) {
@@ -124,10 +134,12 @@ public class WebElementsShop extends Shop{
 					log.info("element's '" + myElement.getName() + "' attribute '" + attributeName + "' value is seted to '" + attributeValue + "'");
 				} else {
 					log.info("element's '" + myElement.getName() + "' attribute '" + attributeName + "' value isn't seted to '" + attributeValue + "'");
+					options.setErrorMessage("element's '" + myElement.getName() + "' attribute '" + attributeName + "' value isn't seted to '" + attributeValue + "'");
 					MultiServices.errorShutdown(options);
 				}
 			} else {
 				log.error("can't set value '" + attributeValue + "' in element's '" + myElement.getName() + "' attribute '" + attributeName + "'" );
+				options.setErrorMessage("can't set value '" + attributeValue + "' in element's '" + myElement.getName() + "' attribute '" + attributeName + "'");
 	    		MultiServices.errorShutdown(options);
 			}
 		}
@@ -140,12 +152,14 @@ public class WebElementsShop extends Shop{
     	int itemNumber = WebElementsServices.getElementsNumber(options);
     	if (itemNumber == -1) {
     		log.error("Element '" + myElement.getName() + "' has not right type " );
+    		options.setErrorMessage("Element '" + myElement.getName() + "' has not right type ");
     		MultiServices.errorShutdown(options);
     	} else {
     		switch (compareType) {
 			case "equal":
 				if (itemNumber != expectedNumber) {
 					log.error("Items '" + myElement.getName() + "' number " + itemNumber + " is not equal to expected number " + expectedNumber);
+					options.setErrorMessage("Items '" + myElement.getName() + "' number " + itemNumber + " is not equal to expected number " + expectedNumber);
 					MultiServices.errorShutdown(options);
 				} else {
 					log.info("Items '" + myElement.getName() + "' number " + itemNumber + " is equal to expected number " + expectedNumber);
@@ -154,6 +168,7 @@ public class WebElementsShop extends Shop{
 			case "more":
 				if (itemNumber <= expectedNumber) {
 					log.error("Items '" + myElement.getName() + "' number " + itemNumber + " is less or equal to expected number " + expectedNumber);
+					options.setErrorMessage("Items '" + myElement.getName() + "' number " + itemNumber + " is less or equal to expected number " + expectedNumber);
 					MultiServices.errorShutdown(options);
 				} else {
 					log.info("Items '" + myElement.getName() + "' number " + itemNumber + " is more than expected number " + expectedNumber);
@@ -162,6 +177,7 @@ public class WebElementsShop extends Shop{
 			case "less":
 				if (itemNumber >= expectedNumber) {
 					log.error("Items number '" + itemNumber + "' is more or equal to expected number " + expectedNumber);
+					options.setErrorMessage("Items number '" + itemNumber + "' is more or equal to expected number " + expectedNumber);
 					MultiServices.errorShutdown(options);
 				} else {
 					log.info("Items '" + myElement.getName() + "' number " + itemNumber + " is less than expected number " + expectedNumber);
@@ -170,6 +186,7 @@ public class WebElementsShop extends Shop{
 			case "more or equal":
 				if (itemNumber < expectedNumber) {
 					log.error("Items '" + myElement.getName() + "' number " + itemNumber + " is less than expected number " + expectedNumber);
+					options.setErrorMessage("Items '" + myElement.getName() + "' number " + itemNumber + " is less than expected number " + expectedNumber);
 					MultiServices.errorShutdown(options);
 				} else {
 					log.info("Items '" + myElement.getName() + "' number " + itemNumber + " is more or equal to expected number " + expectedNumber);
@@ -178,6 +195,7 @@ public class WebElementsShop extends Shop{
 			case "less or equal":
 				if (itemNumber > expectedNumber) {
 					log.error("Items '" + myElement.getName() + "' number " + itemNumber + " is more than expected number " + expectedNumber);
+					options.setErrorMessage("Items '" + myElement.getName() + "' number " + itemNumber + " is more than expected number " + expectedNumber);
 					MultiServices.errorShutdown(options);
 				} else {
 					log.info("Items '" + myElement.getName() + "' number " + itemNumber + " is less or equal to expected number " + expectedNumber);
@@ -185,6 +203,7 @@ public class WebElementsShop extends Shop{
 				break;
 			default:
 				log.error("Compare type is wrong. It can be only equal / more / less / more or equal / less or equal " );
+				options.setErrorMessage("Compare type is wrong. It can be only equal / more / less / more or equal / less or equal ");
 				MultiServices.errorShutdown(options);
 			}
     	}
@@ -198,18 +217,22 @@ public class WebElementsShop extends Shop{
 		int position = WebElementsServices.getElementWithTextPosition(options);
 		if (position == -1) {
 			log.error("Element '" + myElement.getName() + "' has not right type " );
+			options.setErrorMessage("Element '" + myElement.getName() + "' has not right type ");
 			MultiServices.errorShutdown(options);
 		} else {
 			if (position == 0) {
 				log.error("Noone element with expected text " );
+				options.setErrorMessage("Noone element with expected text ");
 				MultiServices.errorShutdown(options);
 			} else {
 				if (position == -2) {
 					log.error("More than one element with expected text " );
+					options.setErrorMessage("More than one element with expected text ");
 					MultiServices.errorShutdown(options);
 				} else {
 					if (position != expectedPosition) {
 						log.error("Item with text " + elementText + " position is " + position + " but expected " + expectedPosition);
+						options.setErrorMessage("Item with text " + elementText + " position is " + position + " but expected " + expectedPosition);
 						MultiServices.errorShutdown(options);
 					} else {
 						log.info("Item with text " + elementText + " position is " + position + " is equal to expected " + expectedPosition);
@@ -227,18 +250,22 @@ public class WebElementsShop extends Shop{
 		int position = WebElementsServices.getElementContainsTextPosition(options);
 		if (position == -1) {
 			log.error("Element has not right type " );
+			options.setErrorMessage("Element has not right type ");
 			MultiServices.errorShutdown(options);
 		} else {
 			if (position == 0) {
 				log.error("Noone element contains expected text '" + elementText + "'" );
+				options.setErrorMessage("Noone element contains expected text '" + elementText + "'");
 				MultiServices.errorShutdown(options);
 			} else {
 				if (position == -2) {
 					log.error("More than one element contain expected text '" + elementText + "'" );
+					options.setErrorMessage("More than one element contain expected text '" + elementText + "'");
 					MultiServices.errorShutdown(options);
 				} else {
 					if (position != expectedPosition) {
 						log.error("Item containing text " + elementText + " position is " + position + " but expected " + expectedPosition);
+						options.setErrorMessage("Item containing text " + elementText + " position is " + position + " but expected " + expectedPosition);
 						MultiServices.errorShutdown(options);
 					} else {
 						log.info("Item containing text " + elementText + " position is " + position + " is equal to expected " + expectedPosition);
@@ -254,11 +281,13 @@ public class WebElementsShop extends Shop{
 		options.setMyElement(myElement);
 		if (!WebElementsServices.waitElementIsVisible(options)) {
 			log.error("element '" + myElement.getName() + "' is not visible shutdown" );
+			options.setErrorMessage("element '" + myElement.getName() + "' is not visible shutdown");
 			MultiServices.errorShutdown(options);
 		} else {
 			Float numberInText = WebElementsServices.getNumberFromElementText(options);
 			if (numberInText == null) {
 				log.error("element '" + myElement.getName() + "' hasn't got a number in text " );
+				options.setErrorMessage("element '" + myElement.getName() + "' hasn't got a number in text ");
 				MultiServices.errorShutdown(options);
 			} else {
 				log.info("element '" + myElement.getName() + "' has te text which contains number '" + numberInText + "' " );
@@ -273,6 +302,7 @@ public class WebElementsShop extends Shop{
 		ArrayList<WebElement> list = WebElementsServices.getArrayOfElements(options);
 		if (list == null) {
 			log.error("can't create array with '" + myElement.getName() + "'" );
+			options.setErrorMessage("can't create array with '" + myElement.getName() + "'");
 			MultiServices.errorShutdown(options);
 		} else {
 			switch (compareType) {
@@ -284,6 +314,7 @@ public class WebElementsShop extends Shop{
 					float preNum = WebElementsServices.getNumberFromElementText(options);
 					if (num != preNum) {
 						log.error("Numbers in elements '" + myElement.getName() + "' is not equal ");
+						options.setErrorMessage("Numbers in elements '" + myElement.getName() + "' is not equal ");
 						MultiServices.errorShutdown(options);
 					}
 					log.info("Items '" + myElement.getName() + "' have equal numbers " );
@@ -297,6 +328,7 @@ public class WebElementsShop extends Shop{
 					float preNum = WebElementsServices.getNumberFromElementText(options);
 					if (num <= preNum) {
 						log.error("Numbers in elements '" + myElement.getName() + "' don't increase ");
+						options.setErrorMessage("Numbers in elements '" + myElement.getName() + "' don't increase ");
 						MultiServices.errorShutdown(options);
 					}
 					log.info("Numbers in elements '" + myElement.getName() + "' increase " );
@@ -310,6 +342,7 @@ public class WebElementsShop extends Shop{
 					float preNum = WebElementsServices.getNumberFromElementText(options);
 					if (num >= preNum) {
 						log.error("Numbers in elements '" + myElement.getName() + "' don't decrease ");
+						options.setErrorMessage("Numbers in elements '" + myElement.getName() + "' don't decrease ");
 						MultiServices.errorShutdown(options);
 					}
 					log.info("Numbers in elements '" + myElement.getName() + "' decrease " );
@@ -323,6 +356,7 @@ public class WebElementsShop extends Shop{
 					float preNum = WebElementsServices.getNumberFromElementText(options);
 					if (num < preNum) {
 						log.error("Numbers in elements '" + myElement.getName() + "' don't increase and are not the same ");
+						options.setErrorMessage("Numbers in elements '" + myElement.getName() + "' don't increase and are not the same ");
 						MultiServices.errorShutdown(options);
 					}
 					log.info("Numbers in elements '" + myElement.getName() + "' increase or the same" );
@@ -336,6 +370,7 @@ public class WebElementsShop extends Shop{
 					float preNum = WebElementsServices.getNumberFromElementText(options);
 					if (num > preNum) {
 						log.error("Numbers in elements '" + myElement.getName() + "' don't decrease and are not the same ");
+						options.setErrorMessage("Numbers in elements '" + myElement.getName() + "' don't decrease and are not the same ");
 						MultiServices.errorShutdown(options);
 					}
 					log.info("Numbers in elements '" + myElement.getName() + "' decrease or the same" );
@@ -343,6 +378,7 @@ public class WebElementsShop extends Shop{
 				break;
 			default:
 				log.error("Compare type is wrong. It can be only equal / more / less / more or equal / less or equal " );
+				options.setErrorMessage("Compare type is wrong. It can be only equal / more / less / more or equal / less or equal ");
 				MultiServices.errorShutdown(options);
 			}
 		}
