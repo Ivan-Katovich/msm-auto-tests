@@ -14,7 +14,7 @@ import cucumber.api.junit.Cucumber;
 		features = "features"
 		,glue="com/epam/environment/stepDefinition"
 		,monochrome = true
-		,tags = {}
+		,tags = {"@run"}
 		,format = {"pretty","html:reports"}
 //		,dryRun = true
 		)

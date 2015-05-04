@@ -109,6 +109,49 @@ public class WebElementsServices {
     	}
     }
     
+    public static boolean waitForDynamicTextPresent(Options options) {
+    	log.info("enter to function waitElementIsPresent with element '" + options.getMyElement().getName() + "'");
+    	
+    	long time = new Date().getTime();
+    	long endTime = time+options.getTimeout();
+    	int pooling = options.getPooling(); 
+    	
+    	if (time>=endTime) {
+    		log.error("Timeout is not correct ");
+    		return false;
+    	} else {
+    		try {
+    			if (options.getDriver().findElement(options.getSelector()).getText().equals(options.getText())) {
+    				log.info("element '" + options.getMyElement().getName() + "' has the text '" + options.getText() + "' it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
+    				return true;
+    			} else {
+    				log.warn("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "'");
+    				while (!options.getDriver().findElement(options.getSelector()).getText().equals(options.getText()) && time <= endTime) {
+    					log.info(time + " lower " + endTime );
+    					try {
+    						Thread.sleep(pooling);
+    					} catch (InterruptedException e) {
+    						log.error(e.getClass());
+    					}
+    					time = new Date().getTime();
+    				}
+    				if (time >= endTime) {
+    					log.error("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "' after timeout, it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
+    					options.setErrorMessage("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "' after timeout, it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
+    					return false;
+    				} else {
+    					log.info("element '" + options.getMyElement().getName() + "' has the text '" + options.getText() + "' now");
+    					return true;
+    				}
+    			}
+    		}
+    		catch (Exception e) {
+    			log.error(e.getClass());
+    			return false;
+    		}
+    	}
+    }
+    
     public static boolean waitElementIsNotVisible(Options options) {
     	log.info("enter to function waitElementIsNotVisible with element '" + options.getMyElement().getName() + "'");
     	long time = new Date().getTime();
