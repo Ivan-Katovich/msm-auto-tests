@@ -1,6 +1,7 @@
 Feature: Car hire journey journey
 Description: This feature will check Car hire full journey
 
+@run
 Scenario: Check the ability to find results with Car hire search gadget
 	Given I am on SuperHomePage
 	When I open Car hire search gadget

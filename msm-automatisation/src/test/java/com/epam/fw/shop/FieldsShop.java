@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.epam.fw.object.MyElement;
 import com.epam.fw.object.Options;
@@ -58,8 +61,17 @@ public class FieldsShop extends Shop {
 				log.info("Datpicker option is selected");
 				break;
 			case "autocomplete":
+//				Actions actions = new Actions(driver);
 				FieldsServices.sendTextToField(options);
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				WebElementsShop.clickOnElement(myElement, driver);
+//				WebElement autocomplete = driver.findElement(options.getSelector());
+//				actions.keyDown(autocomplete, Keys.ENTER).keyUp(autocomplete, Keys.ENTER).perform();
 				log.info("Text entered in the textfield");
 				break;	
 			default:
