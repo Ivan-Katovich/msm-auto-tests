@@ -97,6 +97,20 @@ public class WebElementsShop extends Shop{
     	}
     }
     
+    public static void assertElementDynamicTextBecame(MyElement myElement, String expectedText, WebDriver driver) {
+    	log.info("enter to function assertElementDynamicTextBecame with element '" + myElement.getName() + "'");
+    	options.setDriver(driver);
+		options.setMyElement(myElement);
+		options.setText(expectedText);
+		if (!WebElementsServices.waitForDynamicTextPresent(options)) {
+			log.error("Element '" + myElement.getName() + "' has not text '" + expectedText + "' shutdown");
+//			options.setErrorMessage("Element '" + myElement.getName() + "' has not text '" + expectedText + "' shutdown");
+			MultiServices.errorShutdown(options);
+		} else {
+			log.info("Element '" + myElement.getName() + "' has text '" + expectedText + "' shutdown");
+		}
+    }
+    
     public static void assertElementAttributeHasValue(MyElement myElement, String attributeName, String attributeValue, WebDriver driver) {
     	log.info("enter to function assertElementAttributeHasValue with element '" + myElement.getName() + "'");
 		options.setDriver(driver);

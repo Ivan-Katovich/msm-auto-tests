@@ -18,11 +18,11 @@ public class PageServices {
 	
 	public static boolean waitForPageLoaded(Options options) {
 		log.info("enter to function waitForPageLoaded");
-		
 		long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
 		try {
+			Thread.sleep(pooling);
     		JavascriptExecutor executor = (JavascriptExecutor) options.getDriver();
     		log.info(" ========= "+executor.executeScript("return document.readyState"));
     		if (executor.executeScript("return document.readyState").equals("complete")) {

@@ -60,7 +60,19 @@ public class SuperHomePage extends TestRunner {
 	protected static final MyElement adultsSelector = new MyElement("adultsSelector", "//select[@id='flightsAdults']", "altdropdown");
 	protected static final MyElement childrenSelector = new MyElement("childrenSelector", "//select[@id='flightsChildren']", "altdropdown");
 	protected static final MyElement infantsSelector = new MyElement("infantsSelector", "//select[@id='flightsInfants']", "altdropdown");
-	protected static final MyElement flyingSearchButton = new MyElement("searchButton", "(//button[contains(@class,'submit')])[2]", "button");
+	protected static final MyElement flyingSearchButton = new MyElement("flyingSearchButton", "(//button[contains(@class,'submit')])[2]", "button");
+	
+	//car hire search gadget form
+	protected static final MyElement pickUpFrom = new MyElement("pickUpFrom", "//input[@id='pickUpLocation_input']", "autocomplete");
+	protected static final MyElement pickUptDatePicker = new MyElement("pickUptDatePicker", "//input[@id='pickUpDate']", "datepicker");
+	protected static final MyElement dropOffDatePicker = new MyElement("dropOffDatePicker", "//input[@id='dropOffDate']", "datepicker");
+	protected static final MyElement pickUpTime = new MyElement("pickUpTime", "//select[@id='pickUpTime']", "altdropdown");
+	protected static final MyElement dropOffTime = new MyElement("dropOffTime", "//select[@id='dropOffTime']", "altdropdown");
+	protected static final MyElement agePass = new MyElement("agePass", "//label[@for='driverAgeCheckbox']", "checkbox");
+	protected static final MyElement driverAge = new MyElement("driverAge", "//select[@id='driverAge']", "altdropdown");
+	protected static final MyElement carHireSearchButton = new MyElement("CarHireSearchButton", "(//button[contains(@class,'submit')])[3]", "button");
+	
+	
 	
 	//search gadget profiles
 	protected static final LinkedHashMap<MyElement, String> minimumFlightsProfile = new LinkedHashMap<MyElement, String>(){{
@@ -70,10 +82,11 @@ public class SuperHomePage extends TestRunner {
 		put(returnDatePicker, "10 July 2015");
 	}};
 	
-	
-//	public SuperHomePage(WebDriver driver) {
-//		super(driver);
-//	}
+	protected static final LinkedHashMap<MyElement, String> minimumCarHireProfile = new LinkedHashMap<MyElement, String>(){{
+		put(pickUpFrom, "Manchester");
+		put(pickUptDatePicker, "20 June 2015");
+		put(dropOffDatePicker, "10 July 2015");
+	}};
 	
 	@Given("^I am on SuperHomePage$")
 	public void goToSuperHomePage() {
@@ -99,6 +112,39 @@ public class SuperHomePage extends TestRunner {
 		WebElementsShop.assertElementHasText(hotelsFormButton, text4, driver);
 		WebElementsShop.assertElementHasText(insuranceFormButton, text5, driver);	
 	}
+	
+	@When("^I open Flights search gadget$")
+	public void openFlightsSearchGadget() {
+		WebElementsShop.clickOnElement(flightsFormButton, driver);
+	}
+	
+	@When("^I open Car hire search gadget$")
+	public void openCarHireSearchGadget() {
+		WebElementsShop.clickOnElement(carHireFormButton, driver);
+	}
+	
+	@When("^I fill Flights form by minimum profile$")
+	public void fillFlightsFormByMinimumProfile() {
+		FieldsShop.fillFormByProfile(minimumFlightsProfile, driver);
+	}
+	
+	@When("^I fill Car hire form by minimum profile$")
+	public void fillCarHireFormByMinimumProfile() {
+		FieldsShop.fillFormByProfile(minimumCarHireProfile, driver);
+	}
+	
+	@When("^I submit Flying Search gadget form$")
+	public void submitFlyingSearchGadgetForm() {
+		WebElementsShop.clickOnElement(flyingSearchButton, driver);
+	}
+	
+	@When("^I submit Car hire Search gadget form$")
+	public void submitCarHireSearchGadgetForm() {
+		WebElementsShop.clickOnElement(carHireSearchButton, driver);
+	}
+	
+	
+	
 	
 //	public static SuperHomePage goToSuperHomePage(WebDriver driver) {
 //		PageShop.goToPage(uri, items, driver);

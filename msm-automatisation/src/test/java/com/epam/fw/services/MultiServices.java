@@ -26,7 +26,7 @@ public class MultiServices {
 	
 	public static void getMyScreenshot(Options options) {
 		log.info("enter to function getScreenshot");
-		SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy hh;mm;ss SSS zzz");
+		SimpleDateFormat df = new SimpleDateFormat("(dd-MM-yyyy) hh-mm-ss SSS zzz");
 		Date date = new Date(); 
 		String formattedDate= df.format(date);
 		File file = ((TakesScreenshot) options.getDriver()).getScreenshotAs(OutputType.FILE);
@@ -34,7 +34,9 @@ public class MultiServices {
 		File screen = new File(path);
 		try {
 			FileUtils.copyFile(file, screen);
-			log.error("You can see the screenshot with error on this link " + screen.getAbsolutePath());
+			log.error("You can see the screenshot with error by link " + screen.getAbsolutePath());
+			String errMes = options.getErrorMessage() + "\n You can see the screenshot with error by link " + screen.getAbsolutePath();
+			options.setErrorMessage(errMes);
 		} catch (IOException e) {
 			log.error("have an error with get screenshot" + e);
 		}

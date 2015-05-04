@@ -63,15 +63,15 @@ public class PageShop extends Shop{
 	}
 	
 	public static void assertOnPageWithUrl(String expectedUri, WebDriver driver) {
-		log.info("enter to function assertOnPageWithUrl with URL '" + expectedUri + "'");
+		log.info("enter to function assertOnPageWithUrl with URL '" + BASE_URI + expectedUri + "'");
 		options.setDriver(driver);
 		String actualUri = PageServices.getPageCurrentUrl(options);
-		if (!actualUri.equals(expectedUri)) {
-			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + expectedUri + "'");
-			options.setErrorMessage("Page loaded with uri '" + actualUri + "' but expected uri was '" + expectedUri + "'");
+		if (actualUri.indexOf(BASE_URI+expectedUri) == -1 || actualUri.equals(null)) {
+			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
+			options.setErrorMessage("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
 			MultiServices.errorShutdown(options);
 		} else {
-			log.info("actual and expected uri are the same and equal '" + expectedUri + "'");
+			log.info("actual and expected uri are the same and equal '" + BASE_URI + expectedUri + "'");
 		}
 	}
 	
