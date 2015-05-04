@@ -1,7 +1,7 @@
 Feature: Check SuperHomePage elements
 Description: This feature will check super home page elements visibility
 
-
+@run
 Scenario: Check logo, main menu, main title and SG buttons
 	Given I am on SuperHomePage
 	Then I sould see elements: search gadget, main logo
