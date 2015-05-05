@@ -8,5 +8,5 @@ Scenario: Check the ability to find results with Car hire search gadget
 	And I fill Car hire form by minimum profile
 	And I submit Car hire Search gadget form
 	And I wait for page absolutely load
-	And I wait for all providers load
+#	And I wait for all providers load
 	Then I am taken to the Car hire results page

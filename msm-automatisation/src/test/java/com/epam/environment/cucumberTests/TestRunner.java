@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import cucumber.api.CucumberOptions;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.junit.Cucumber;
  
 @RunWith(Cucumber.class)
@@ -21,30 +23,8 @@ import cucumber.api.junit.Cucumber;
  
 public class TestRunner {
 	
-	protected static WebDriver driver;
-//	protected static Page page;
+	private static WebDriver driver;
 	
-	@BeforeClass
-	public static void startTestComplect() throws Exception{
-//		URL gridHost = new URL("http://"+SELENIUM_HOST_HOME+":"+SELENIUM_PORT+"/wd/hub");
-//		URL gridHost = new URL("http://localhost:4444/wd/hub");
-//		URL gridHost = new URL("http://192.168.0.101:4444/wd/hub");
-//		DesiredCapabilities capability = DesiredCapabilities.firefox();
-//		driver = new RemoteWebDriver(gridHost, capability);
-		driver = new FirefoxDriver();
-//	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//	    driver.manage().window().maximize();
-	}
 	
-	@AfterClass
-	public static void shutdownTestComplect() throws Exception{
-		driver.close();
-//		Thread.sleep(1000); 
-	    driver.quit();
-//	    Runtime.getRuntime().exec("taskkill /F /IM firefox.exe");
-//	    Thread.sleep(5000);
-//	    Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");
-//	    Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
-	}
  
 }

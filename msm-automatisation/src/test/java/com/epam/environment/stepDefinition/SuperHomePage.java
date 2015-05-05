@@ -20,7 +20,7 @@ import com.epam.fw.shop.WebElementsShop;
 
 import cucumber.api.java.en.*;
 
-public class SuperHomePage extends TestRunner {
+public class SuperHomePage {
 	
 	private static final Logger log = Logger.getLogger(SuperHomePage.class);
 	
@@ -88,59 +88,63 @@ public class SuperHomePage extends TestRunner {
 		put(dropOffDatePicker, "10 July 2015");
 	}};
 	
+	
+	public SuperHomePage() {}
+	
+	
 	@Given("^I am on SuperHomePage$")
 	public void goToSuperHomePage() {
-		PageShop.goToPage(uri, items, driver);
+		PageShop.goToPage(uri, items, Hooks.driver);
 	}
 	
 	@Then("^I sould see elements: search gadget, main logo$")
 	public void checkTheSuperHomePageMainElementsVisibility() {
-		WebElementsShop.assertElementVisible(searchGadgetForm, driver);
-		WebElementsShop.assertElementVisible(mainLogo, driver);
+		WebElementsShop.assertElementVisible(searchGadgetForm, Hooks.driver);
+		WebElementsShop.assertElementVisible(mainLogo, Hooks.driver);
 	}
 	
 	@Then("^I sould see following text of the SuperHomePage main title: '(.+)'$")
 	public void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
-		WebElementsShop.assertElementHasText(mainTitle, text, driver);
+		WebElementsShop.assertElementHasText(mainTitle, text, Hooks.driver);
 	}
 	
 	@Then("^I sould see following search gadget buttons: '(.+)', '(.+)', '(.+)', '(.+)', '(.+)'$")
 	public void checkTheSuperHomePageElementsText(String text1, String text2, String text3, String text4, String text5) throws Throwable {
-		WebElementsShop.assertElementHasText(holidaysFormButton, text1, driver);
-		WebElementsShop.assertElementHasText(flightsFormButton, text2, driver);
-		WebElementsShop.assertElementHasText(carHireFormButton, text3, driver);
-		WebElementsShop.assertElementHasText(hotelsFormButton, text4, driver);
-		WebElementsShop.assertElementHasText(insuranceFormButton, text5, driver);	
+		WebElementsShop.assertElementHasText(holidaysFormButton, text1, Hooks.driver);
+		WebElementsShop.assertElementHasText(flightsFormButton, text2, Hooks.driver);
+		WebElementsShop.assertElementHasText(carHireFormButton, text3, Hooks.driver);
+		WebElementsShop.assertElementHasText(hotelsFormButton, text4, Hooks.driver);
+		WebElementsShop.assertElementHasText(insuranceFormButton, text5, Hooks.driver);	
 	}
 	
 	@When("^I open Flights search gadget$")
 	public void openFlightsSearchGadget() {
-		WebElementsShop.clickOnElement(flightsFormButton, driver);
+		WebElementsShop.clickOnElement(flightsFormButton, Hooks.driver);
 	}
 	
 	@When("^I open Car hire search gadget$")
 	public void openCarHireSearchGadget() {
-		WebElementsShop.clickOnElement(carHireFormButton, driver);
+		WebElementsShop.clickOnElement(carHireFormButton, Hooks.driver);
 	}
 	
 	@When("^I fill Flights form by minimum profile$")
 	public void fillFlightsFormByMinimumProfile() {
-		FieldsShop.fillFormByProfile(minimumFlightsProfile, driver);
+		FieldsShop.fillFormByProfile(minimumFlightsProfile, Hooks.driver);
 	}
 	
 	@When("^I fill Car hire form by minimum profile$")
 	public void fillCarHireFormByMinimumProfile() {
-		FieldsShop.fillFormByProfile(minimumCarHireProfile, driver);
+		FieldsShop.fillFormByProfile(minimumCarHireProfile, Hooks.driver);
 	}
 	
 	@When("^I submit Flying Search gadget form$")
 	public void submitFlyingSearchGadgetForm() {
-		WebElementsShop.clickOnElement(flyingSearchButton, driver);
+		WebElementsShop.clickOnElement(flyingSearchButton, Hooks.driver);
 	}
 	
 	@When("^I submit Car hire Search gadget form$")
 	public void submitCarHireSearchGadgetForm() {
-		WebElementsShop.clickOnElement(carHireSearchButton, driver);
+		WebElementsShop.clickOnElement(carHireSearchButton, Hooks.driver);
 	}
 	
 	
