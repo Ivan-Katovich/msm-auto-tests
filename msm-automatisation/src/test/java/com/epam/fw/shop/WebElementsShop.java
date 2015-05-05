@@ -50,6 +50,11 @@ public class WebElementsShop extends Shop{
 		if (WebElementsServices.waitElementIsVisible(options)) {
 			log.info("visible true");
 			driver.findElement(options.getSelector()).click();
+//			try {
+//				driver.findElement(options.getSelector()).click();
+//			} catch(Exception e) {
+//				log.info("click is not needed");
+//			}
 		} else {
 			log.error("couldn't click on the element '" + myElement.getName() + "'");
 			options.setErrorMessage("couldn't click on the element '" + myElement.getName() + "'");

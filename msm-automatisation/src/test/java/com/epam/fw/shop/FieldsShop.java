@@ -1,5 +1,6 @@
 package com.epam.fw.shop;
 
+import java.awt.RenderingHints.Key;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -63,14 +64,14 @@ public class FieldsShop extends Shop {
 			case "autocomplete":
 //				Actions actions = new Actions(driver);
 				FieldsServices.sendTextToField(options);
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				WebElementsShop.clickOnElement(myElement, driver);
-//				WebElement autocomplete = driver.findElement(options.getSelector());
+//				try {
+//					Thread.sleep(600);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//				WebElementsShop.clickOnElement(myElement, driver);
+				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
+				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
 //				actions.keyDown(autocomplete, Keys.ENTER).keyUp(autocomplete, Keys.ENTER).perform();
 				log.info("Text entered in the textfield");
 				break;	
