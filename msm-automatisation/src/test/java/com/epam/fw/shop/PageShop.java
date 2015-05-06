@@ -14,7 +14,7 @@ public class PageShop extends Shop{
 	
 	private static final Logger log = Logger.getLogger(PageShop.class);
 	
-	public static void goToPage(String uri, WebDriver driver) {
+	public static void goToPage(String uri) {
 		options.setDriver(driver);
 		options.setUri(uri);
 		String fullUri = PageServices.urlCreator(options);
@@ -34,7 +34,7 @@ public class PageShop extends Shop{
 		}
 	}
 	
-	public static void goToPage(String uri, String items, WebDriver driver) {
+	public static void goToPage(String uri, String items) {
 		options.setDriver(driver);
 		options.setUri(uri);
 		options.setItems(items);
@@ -49,7 +49,7 @@ public class PageShop extends Shop{
 		}
 	}
 	
-	public static void waitForPage(WebDriver driver) {
+	public static void waitForPage() {
 		options.setDriver(driver);		
 		String actualUri = PageServices.getPageCurrentUrl(options);
 		options.setUri(actualUri);
@@ -62,7 +62,7 @@ public class PageShop extends Shop{
 		}
 	}
 	
-	public static void assertOnPageWithUrl(String expectedUri, WebDriver driver) {
+	public static void assertOnPageWithUrl(String expectedUri) {
 		log.info("enter to function assertOnPageWithUrl with URL '" + BASE_URI + expectedUri + "'");
 		options.setDriver(driver);
 		String actualUri = PageServices.getPageCurrentUrl(options);
@@ -75,7 +75,7 @@ public class PageShop extends Shop{
 		}
 	}
 	
-	public static void assertCurrentUrlContainsStringItem(String stringItem, WebDriver driver) {
+	public static void assertCurrentUrlContainsStringItem(String stringItem) {
 		log.info("enter to function assertOnPageWithUrl with URL '" + stringItem + "'");
 		options.setDriver(driver);
 		String actualUri = PageServices.getPageCurrentUrl(options);

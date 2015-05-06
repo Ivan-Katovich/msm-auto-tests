@@ -17,7 +17,7 @@ public class WebElementsShop extends Shop{
 	
 	private static final Logger log = Logger.getLogger(WebElementsShop.class);
 	
-	public static void assertElementVisible(MyElement myElement, WebDriver driver) {
+	public static void assertElementVisible(MyElement myElement) {
 		log.info("enter to function assertElementVisible with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -30,7 +30,7 @@ public class WebElementsShop extends Shop{
 		}
 	}
 	
-	public static void assertElementPresent(MyElement myElement, WebDriver driver) {
+	public static void assertElementPresent(MyElement myElement) {
 		log.info("enter to function assertElementPresent with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -43,7 +43,7 @@ public class WebElementsShop extends Shop{
 		}
 	}
     
-    public static void clickOnElement(MyElement myElement, WebDriver driver) {
+    public static void clickOnElement(MyElement myElement) {
     	log.info("enter to function clickOnElement with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -62,7 +62,7 @@ public class WebElementsShop extends Shop{
 		}
 	}
     
-    public static void assertElementHasText(MyElement myElement, String expectedText, WebDriver driver) {
+    public static void assertElementHasText(MyElement myElement, String expectedText) {
     	log.info("enter to function assertElementHasText with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -82,7 +82,7 @@ public class WebElementsShop extends Shop{
     	}
     }
     
-    public static void assertElementContainsText(MyElement myElement, String expectedText, WebDriver driver) {
+    public static void assertElementContainsText(MyElement myElement, String expectedText) {
     	log.info("enter to function assertElementContainsText with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -102,7 +102,7 @@ public class WebElementsShop extends Shop{
     	}
     }
     
-    public static void assertElementDynamicTextBecame(MyElement myElement, String expectedText, WebDriver driver) {
+    public static void assertElementDynamicTextBecame(MyElement myElement, String expectedText) {
     	log.info("enter to function assertElementDynamicTextBecame with element '" + myElement.getName() + "'");
     	options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -116,7 +116,7 @@ public class WebElementsShop extends Shop{
 		}
     }
     
-    public static void assertElementAttributeHasValue(MyElement myElement, String attributeName, String attributeValue, WebDriver driver) {
+    public static void assertElementAttributeHasValue(MyElement myElement, String attributeName, String attributeValue) {
     	log.info("enter to function assertElementAttributeHasValue with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -137,7 +137,7 @@ public class WebElementsShop extends Shop{
     	}
     }
     
-    public static void setElementAttributeValue(MyElement myElement, String attributeName, String attributeValue, WebDriver driver) {
+    public static void setElementAttributeValue(MyElement myElement, String attributeName, String attributeValue) {
     	log.info("enter to function setElementAttributeValue with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -164,7 +164,7 @@ public class WebElementsShop extends Shop{
 		}
     }
     
-    public static void assertElementsNumber(MyElement myElement, String compareType, int expectedNumber, WebDriver driver) {
+    public static void assertElementsNumber(MyElement myElement, String compareType, int expectedNumber) {
     	log.info("enter to function assertElementsNumber with elements '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -228,7 +228,7 @@ public class WebElementsShop extends Shop{
     	}
     }
     
-    public static void assertElementWithTextPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
+    public static void assertElementWithTextPosition(MyElement myElement, String elementText, int expectedPosition) {
     	log.info("enter to function assertElementWithTextPosition with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -261,7 +261,7 @@ public class WebElementsShop extends Shop{
 		}
     }
     
-    public static void assertElementContainsTextPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
+    public static void assertElementContainsTextPosition(MyElement myElement, String elementText, int expectedPosition) {
     	log.info("enter to function assertElementContainsTextPosition with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -294,7 +294,7 @@ public class WebElementsShop extends Shop{
 		}
     }
     
-    public static void assertElementContainsNumber(MyElement myElement, WebDriver driver) {
+    public static void assertElementContainsNumber(MyElement myElement) {
     	log.info("enter to function assertElementContainsNumber with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -314,7 +314,7 @@ public class WebElementsShop extends Shop{
 		}
     }
     
-    public static void assertOrderOfElementsNumbers(MyElement myElement, String compareType, WebDriver driver) {
+    public static void assertOrderOfElementsNumbers(MyElement myElement, String compareType) {
     	log.info("enter to function assertOrderOfElementsNumbers with element '" + myElement.getName() + "'");
     	options.setDriver(driver);
 		options.setMyElement(myElement);

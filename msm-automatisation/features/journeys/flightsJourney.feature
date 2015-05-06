@@ -1,7 +1,7 @@
 Feature: Flights journey
 Description: This feature will check flights full journey
 
-@run
+@first
 Scenario: Check the ability to find results with Flights search gadget
 	Given I am on SuperHomePage
 	When I open Flights search gadget

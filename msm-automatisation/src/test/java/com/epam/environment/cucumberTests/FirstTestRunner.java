@@ -16,14 +16,13 @@ import cucumber.api.junit.Cucumber;
 		features = "features"
 		,glue="com/epam/environment/stepDefinition"
 		,monochrome = true
-		,tags = {"@run"}
-		,format = {"pretty","html:reports"}
+		,tags = {"@first"}
+		,format = {"pretty","html:reports/first"}
 //		,dryRun = true
 		)
  
-public class TestRunner {
+public class FirstTestRunner {
 	
-	private static WebDriver driver;
 	
 	
  

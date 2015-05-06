@@ -16,7 +16,7 @@ public class ImageShop extends Shop {
 	
 	private static final Logger log = Logger.getLogger(ImageShop.class);
 	
-	public static void assertImageOnPage(MyImage image, WebDriver driver) {
+	public static void assertImageOnPage(MyImage image) {
 		log.info("enter to function assertImageOnPage " + image.getName() + "'");
 		options.setDriver(driver);
 		options.setMyImage(image);
