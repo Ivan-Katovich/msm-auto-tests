@@ -9,6 +9,7 @@ import com.epam.environment.stepDefinition.SuperHomePageSteps;
 import com.epam.fw.object.MyElement;
 import com.epam.fw.shop.FieldsShop;
 import com.epam.fw.shop.PageShop;
+import com.epam.fw.shop.Shop;
 import com.epam.fw.shop.WebElementsShop;
 
 import cucumber.api.java.en.Given;
@@ -22,6 +23,44 @@ private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	//url items
 	protected static final String uri = "/beta/";
 	protected static final String items = "?searchGadgetForm=true";
+	
+	//elements
+	protected static final LinkedHashMap<String, MyElement> superHomePageElements = new LinkedHashMap<String, MyElement>(){{
+		//page elements
+		put("mainLogo", new MyElement("//a[contains(@class,'site-logo-link')]", "webElement"));
+		put("mainMenu", new MyElement("//button[@id='navigation-screen-toggle-area']", "button"));
+		put("mainTitle", new MyElement("//div[@id='hero']", "webElement"));
+		
+		//new search gadget
+		put("searchGadgetForm", new MyElement("//div[contains(@class,'searchGadgetForm__form-wrap')]", "webElement"));
+		put("carHireFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[3]", "button"));
+		put("flightsFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[2]", "button"));
+		put("holidaysFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[1]", "button"));
+		put("hotelsFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[4]", "button"));
+		put("insuranceFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[5]", "button"));
+		
+		//flights search gadget form
+		put("airportFlyingFromField", new MyElement("//input[@id='flyingFromField_input']", "autocomplete"));
+		put("airportFlyingToField", new MyElement("//input[@id='flyingToField_input']", "autocomplete"));
+		put("returnOneWayRadio", new MyElement("//ul[@class='searchGadgetForm__list--radio']", "radio"));
+		put("directFlightsOnlyCheckbox", new MyElement("//label[@for='isDirectOnly']", "checkbox"));
+		put("departDatePicker", new MyElement("//input[@id='departureDate']", "datepicker"));
+		put("returnDatePicker", new MyElement("//input[@id='returnDate']", "datepicker"));
+		put("adultsSelector", new MyElement("//select[@id='flightsAdults']", "altdropdown"));
+		put("childrenSelector", new MyElement("//select[@id='flightsChildren']", "altdropdown"));
+		put("infantsSelector", new MyElement("//select[@id='flightsInfants']", "altdropdown"));
+		put("flyingSearchButton", new MyElement("(//button[contains(@class,'submit')])[2]", "button"));
+		
+		//car hire search gadget form
+		put("pickUpFrom", new MyElement("//input[@id='pickUpLocation_input']", "autocomplete"));
+		put("pickUptDatePicker", new MyElement("//input[@id='pickUpDate']", "datepicker"));
+		put("dropOffDatePicker", new MyElement("//input[@id='dropOffDate']", "datepicker"));
+		put("pickUpTime", new MyElement("//select[@id='pickUpTime']", "altdropdown"));
+		put("dropOffTime", new MyElement("//select[@id='dropOffTime']", "altdropdown"));
+		put("agePass", new MyElement("//label[@for='getDriver()AgeCheckbox']", "checkbox"));
+		put("driverAge", new MyElement("//select[@id='getDriver()Age']", "altdropdown"));
+		put("carHireSearchButton", new MyElement("(//button[contains(@class,'submit')])[3]", "button"));
+	}};
 	
 	//elements
 	//page elements
@@ -89,8 +128,8 @@ private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	}
 	
 	public static void checkTheSuperHomePageMainElementsVisibility() {
-		WebElementsShop.assertElementVisible(searchGadgetForm);
-		WebElementsShop.assertElementVisible(mainLogo);
+		WebElementsShop.assertElementVisible(Shop.getMyElementByName(superHomePageElements, "searchGadgetForm"));
+		WebElementsShop.assertElementVisible(Shop.getMyElementByName(superHomePageElements, "mainLogo"));
 	}
 	
 	public static void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
