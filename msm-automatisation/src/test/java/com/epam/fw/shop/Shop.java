@@ -1,7 +1,6 @@
 package com.epam.fw.shop;
 
-import static com.epam.fw.data.ConstantData.SELENIUM_HOST_LOCAL;
-import static com.epam.fw.data.ConstantData.SELENIUM_PORT;
+import static com.epam.fw.data.ConstantData.*;
 
 import java.net.URL;
 import java.util.LinkedHashMap;
@@ -30,7 +29,8 @@ public abstract class Shop {
 				driver = new FirefoxDriver();
 				break;
 			case "RemoteFirefox":
-				URL gridHost = new URL("http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
+				URL gridHost = new URL("http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
+				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
 				DesiredCapabilities capability = DesiredCapabilities.firefox();
 				driver = new RemoteWebDriver(gridHost, capability);
 				break;

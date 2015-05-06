@@ -13,7 +13,7 @@ public final class ConstantData {
 	public static final String BASE_URI = "http://www.sit1.gb.travelsupermarket.com";
 	
 	//seleniun grid
-	public static final String SELENIUM_HOST_MOSVM = "10.6.131.33";
+	public static final String SELENIUM_HOST_WORKST = "10.6.205.25";
 	public static final String SELENIUM_HOST_LOCAL = "localhost";
 	public static final String SELENIUM_HOST_HOME = "192.168.0.101";
 	public static final String SELENIUM_PORT = "4444";
@@ -22,7 +22,7 @@ public final class ConstantData {
 //	public static final MyElement TOP_LOGO = new MyElement("topLogo", "//img[@class='onliner_logo retina-off']", "webelement");
 	
 	//timeout
-	public static final int TIME_OUT = 40000;
+	public static final int TIME_OUT = 20000;
 	public static final int POOLING = 2000;
 	
 
