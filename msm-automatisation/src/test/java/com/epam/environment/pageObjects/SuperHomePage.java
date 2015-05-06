@@ -1,28 +1,23 @@
-package com.epam.environment.stepDefinition;
-
+package com.epam.environment.pageObjects;
 
 import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.touch.FlickAction;
 
-import com.epam.environment.cucumberTests.TestRunner;
-import com.epam.environment.stepDefinition.channels.ChannelPage;
-import com.epam.environment.stepDefinition.channels.FlightsResultsPage;
+import com.epam.environment.stepDefinition.Hooks;
+import com.epam.environment.stepDefinition.SuperHomePageSteps;
 import com.epam.fw.object.MyElement;
-import com.epam.fw.services.WebElementsServices;
 import com.epam.fw.shop.FieldsShop;
 import com.epam.fw.shop.PageShop;
 import com.epam.fw.shop.WebElementsShop;
 
-import cucumber.api.java.en.*;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
-public class SuperHomePage {
+public class SuperHomePage extends Page{
 	
-	private static final Logger log = Logger.getLogger(SuperHomePage.class);
+private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	
 	//url items
 	protected static final String uri = "/beta/";
@@ -68,8 +63,8 @@ public class SuperHomePage {
 	protected static final MyElement dropOffDatePicker = new MyElement("dropOffDatePicker", "//input[@id='dropOffDate']", "datepicker");
 	protected static final MyElement pickUpTime = new MyElement("pickUpTime", "//select[@id='pickUpTime']", "altdropdown");
 	protected static final MyElement dropOffTime = new MyElement("dropOffTime", "//select[@id='dropOffTime']", "altdropdown");
-	protected static final MyElement agePass = new MyElement("agePass", "//label[@for='driverAgeCheckbox']", "checkbox");
-	protected static final MyElement driverAge = new MyElement("driverAge", "//select[@id='driverAge']", "altdropdown");
+	protected static final MyElement agePass = new MyElement("agePass", "//label[@for='getDriver()AgeCheckbox']", "checkbox");
+	protected static final MyElement driverAge = new MyElement("driverAge", "//select[@id='getDriver()Age']", "altdropdown");
 	protected static final MyElement carHireSearchButton = new MyElement("CarHireSearchButton", "(//button[contains(@class,'submit')])[3]", "button");
 	
 	
@@ -89,94 +84,49 @@ public class SuperHomePage {
 	}};
 	
 	
-	public SuperHomePage() {}
-	
-	
-	@Given("^I am on SuperHomePage$")
-	public void goToSuperHomePage() {
-		PageShop.goToPage(uri, items, Hooks.driver);
+	public static void goToSuperHomePage() {
+		PageShop.goToPage(uri, items);
 	}
 	
-	@Then("^I sould see elements: search gadget, main logo$")
-	public void checkTheSuperHomePageMainElementsVisibility() {
-		WebElementsShop.assertElementVisible(searchGadgetForm, Hooks.driver);
-		WebElementsShop.assertElementVisible(mainLogo, Hooks.driver);
+	public static void checkTheSuperHomePageMainElementsVisibility() {
+		WebElementsShop.assertElementVisible(searchGadgetForm);
+		WebElementsShop.assertElementVisible(mainLogo);
 	}
 	
-	@Then("^I sould see following text of the SuperHomePage main title: '(.+)'$")
-	public void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
-		WebElementsShop.assertElementHasText(mainTitle, text, Hooks.driver);
+	public static void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
+		WebElementsShop.assertElementHasText(mainTitle, text);
 	}
 	
-	@Then("^I sould see following search gadget buttons: '(.+)', '(.+)', '(.+)', '(.+)', '(.+)'$")
-	public void checkTheSuperHomePageElementsText(String text1, String text2, String text3, String text4, String text5) throws Throwable {
-		WebElementsShop.assertElementHasText(holidaysFormButton, text1, Hooks.driver);
-		WebElementsShop.assertElementHasText(flightsFormButton, text2, Hooks.driver);
-		WebElementsShop.assertElementHasText(carHireFormButton, text3, Hooks.driver);
-		WebElementsShop.assertElementHasText(hotelsFormButton, text4, Hooks.driver);
-		WebElementsShop.assertElementHasText(insuranceFormButton, text5, Hooks.driver);	
+	public static void checkTheSuperHomePageElementsText(String text1, String text2, String text3, String text4, String text5) throws Throwable {
+		WebElementsShop.assertElementHasText(holidaysFormButton, text1);
+		WebElementsShop.assertElementHasText(flightsFormButton, text2);
+		WebElementsShop.assertElementHasText(carHireFormButton, text3);
+		WebElementsShop.assertElementHasText(hotelsFormButton, text4);
+		WebElementsShop.assertElementHasText(insuranceFormButton, text5);	
 	}
 	
-	@When("^I open Flights search gadget$")
-	public void openFlightsSearchGadget() {
-		WebElementsShop.clickOnElement(flightsFormButton, Hooks.driver);
+	public static void openFlightsSearchGadget() {
+		WebElementsShop.clickOnElement(flightsFormButton);
 	}
 	
-	@When("^I open Car hire search gadget$")
-	public void openCarHireSearchGadget() {
-		WebElementsShop.clickOnElement(carHireFormButton, Hooks.driver);
+	public static void openCarHireSearchGadget() {
+		WebElementsShop.clickOnElement(carHireFormButton);
 	}
 	
-	@When("^I fill Flights form by minimum profile$")
-	public void fillFlightsFormByMinimumProfile() {
-		FieldsShop.fillFormByProfile(minimumFlightsProfile, Hooks.driver);
+	public static void fillFlightsFormByMinimumProfile() {
+		FieldsShop.fillFormByProfile(minimumFlightsProfile);
 	}
 	
-	@When("^I fill Car hire form by minimum profile$")
-	public void fillCarHireFormByMinimumProfile() {
-		FieldsShop.fillFormByProfile(minimumCarHireProfile, Hooks.driver);
+	public static void fillCarHireFormByMinimumProfile() {
+		FieldsShop.fillFormByProfile(minimumCarHireProfile);
 	}
 	
-	@When("^I submit Flying Search gadget form$")
-	public void submitFlyingSearchGadgetForm() {
-		WebElementsShop.clickOnElement(flyingSearchButton, Hooks.driver);
+	public static void submitFlyingSearchGadgetForm() {
+		WebElementsShop.clickOnElement(flyingSearchButton);
 	}
 	
-	@When("^I submit Car hire Search gadget form$")
-	public void submitCarHireSearchGadgetForm() {
-		WebElementsShop.clickOnElement(carHireSearchButton, Hooks.driver);
+	public static void submitCarHireSearchGadgetForm() {
+		WebElementsShop.clickOnElement(carHireSearchButton);
 	}
-	
-	
-	
-	
-//	public static SuperHomePage goToSuperHomePage(WebDriver driver) {
-//		PageShop.goToPage(uri, items, driver);
-//		return new SuperHomePage(driver);
-//	}
-//	
-//	public void checkSuperHomePageContentSGF() {
-//		WebElementsShop.assertElementVisible(searchGadgetForm, driver);
-//		WebElementsShop.assertElementVisible(mainLogo, driver);
-//		WebElementsShop.assertElementHasText(mainTitle, "Leave London behind Where do you want to go today?", driver);
-//		WebElementsShop.assertElementHasText(carHireFormButton, "Car Hire", driver);
-//		WebElementsShop.assertElementHasText(flightsFormButton, "Flights", driver);
-//		WebElementsShop.assertElementHasText(holidaysFormButton, "Holidays", driver);
-//		WebElementsShop.assertElementHasText(hotelsFormButton, "Hotels", driver);
-//		WebElementsShop.assertElementHasText(insuranceFormButton, "Insurance", driver);	
-//	}
-//	
-//	public void fillFlightsFormByMinimumProfile() {
-//		WebElementsShop.clickOnElement(flightsFormButton, driver);
-//		FieldsShop.fillFormByProfile(minimumFlightsProfile, driver);
-//	}
-//	
-//	public FlightsResultsPage goToFlightsResultsPageWithMinimumProfile() {
-//		WebElementsShop.clickOnElement(flyingSearchButton, driver);
-//		PageShop.waitForPage(driver);
-//		return new FlightsResultsPage(driver);
-//	}
-	
-	
 
 }

@@ -13,6 +13,11 @@ public class MyImage {
 		this.type = type;
 		this.name = name;
 	}
+	
+	public MyImage(String path, String type) {
+		this.path = path;
+		this.type = type;
+	}
 
 	public String getPath() {
 		return path;

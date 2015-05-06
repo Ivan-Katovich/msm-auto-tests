@@ -13,6 +13,11 @@ public class MyElement {
 		this.type = type;
 		this.name = name;
 	}
+	
+	public MyElement(String xpath, String type) {
+		this.xpath = xpath;
+		this.type = type;
+	}
 
 	public String getXpath() {
 		return xpath;

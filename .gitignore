@@ -5,6 +5,7 @@ msm-automatisation/reports/
 msm-automatisation/src/test/resources/screenshots/
 .classpath
 msm-automatisation/MoneySuperMarket.iml
+msm-automatisation/npm-debug.log
 .project
 .metadata/
 Prob/

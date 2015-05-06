@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +21,7 @@ public class FieldsShop extends Shop {
 	
 	private static final Logger log = Logger.getLogger(FieldsShop.class);
 	  
-    public static void fillFieldByValue(MyElement myElement, String value, WebDriver driver) {
+    public static void fillFieldByValue(MyElement myElement, String value) {
     	log.info("enter to function fillFieldByValue '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -42,7 +43,7 @@ public class FieldsShop extends Shop {
 				break;
 			case "button":
 				if (value == "click") {
-					WebElementsShop.clickOnElement(myElement, driver);
+					WebElementsShop.clickOnElement(myElement);
 				}
 				log.info("Button is clicked");
 				break;
@@ -52,26 +53,29 @@ public class FieldsShop extends Shop {
 				break;
 			case "checkbox":
 				if (value == "click") {
-					WebElementsShop.clickOnElement(myElement, driver);
+					WebElementsShop.clickOnElement(myElement);
 				}
 				log.info("Checkbox option is selected");
 				break;
 			case "datepicker":
-				WebElementsShop.clickOnElement(myElement, driver);
+				WebElementsShop.clickOnElement(myElement);
 				FieldsServices.selectDate(options);
 				log.info("Datpicker option is selected");
 				break;
 			case "autocomplete":
 //				Actions actions = new Actions(driver);
 				FieldsServices.sendTextToField(options);
-//				try {
-//					Thread.sleep(600);
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
 //				WebElementsShop.clickOnElement(myElement, driver);
 				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
-				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
+				// for TSM project needs to check on another
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
+					WebElementsShop.clickOnElement(myElement);
+				}
 //				actions.keyDown(autocomplete, Keys.ENTER).keyUp(autocomplete, Keys.ENTER).perform();
 				log.info("Text entered in the textfield");
 				break;	
@@ -87,7 +91,7 @@ public class FieldsShop extends Shop {
 		}
     }
     
-    public static void fillFormByProfile(LinkedHashMap<MyElement, String> map, WebDriver driver) {
+    public static void fillFormByProfile(LinkedHashMap<MyElement, String> map) {
     	log.info("enter to function fillFormByProfile");
     	options.setDriver(driver);
     	try {
@@ -95,11 +99,12 @@ public class FieldsShop extends Shop {
     			if (element == null || map.get(element) == null) {
     				log.warn("Element or value is wrong");
     			} else {
-    				fillFieldByValue(element, map.get(element), driver);
+    				fillFieldByValue(element, map.get(element));
     			}
     		}
     	} catch (Exception e) {
     		log.error("Something wrong with profile " + e.getClass());
+    		options.setErrorMessage("Something wrong with profile " + e.getClass());
     		MultiServices.errorShutdown(options);
     	}
     }
