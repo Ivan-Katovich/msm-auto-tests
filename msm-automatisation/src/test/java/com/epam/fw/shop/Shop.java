@@ -30,7 +30,7 @@ public abstract class Shop {
 				break;
 			case "RemoteFirefox":
 				URL gridHost = new URL("http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
-				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
+//				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
 				DesiredCapabilities capability = DesiredCapabilities.firefox();
 				driver = new RemoteWebDriver(gridHost, capability);
 				break;
