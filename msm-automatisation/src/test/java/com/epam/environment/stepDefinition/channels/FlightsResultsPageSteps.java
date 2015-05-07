@@ -15,7 +15,7 @@ public class FlightsResultsPageSteps {
 	
 	public FlightsResultsPageSteps() {}
 	
-	@Then("^I am taken to the Flights results page$")
+	@Then("^I am taken to the FlightsResults page$")
 	public void AssertOnFlightsResultsPage() {
 		FlightsResultsPage.AssertOnFlightsResultsPage();
 	}

@@ -32,50 +32,27 @@ public class SuperHomePageSteps {
 		SuperHomePage.goToSuperHomePage();
 	}
 	
-	@Then("^I sould see elements: search gadget, main logo$")
-	public void checkTheSuperHomePageMainElementsVisibility() {
-		SuperHomePage.checkTheSuperHomePageMainElementsVisibility();
+	@Then("^the superHomePage element '(.+)' is visible$")
+	public void checkTheSuperHomePageElementIsVisibile(String elementName) {
+		SuperHomePage.checkTheSuperHomePageElementIsVisibile(elementName);
 	}
 	
-	@Then("^I sould see following text of the SuperHomePage main title: '(.+)'$")
-	public void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
-		SuperHomePage.checkTheSuperHomePageMainTitleText(text);
+	@Then("^the superHomePage element '(.+)' has the text '(.+)'$")
+	public void checkTheSuperHomePageElementHasTheText(String elementName, String text) throws Throwable {
+		SuperHomePage.checkTheSuperHomePageElementHasTheText(elementName, text);
 	}
 	
-	@Then("^I sould see following search gadget buttons: '(.+)', '(.+)', '(.+)', '(.+)', '(.+)'$")
-	public void checkTheSuperHomePageElementsText(String text1, String text2, String text3, String text4, String text5) throws Throwable {
-		SuperHomePage.checkTheSuperHomePageElementsText(text1, text2, text3, text4, text5);
+	@When("^I click on the superHomePageElement '(.+)'$")
+	public void clickOnSuperHomePageElement(String elementName) {
+		SuperHomePage.clickOnSuperHomePageElement(elementName);
 	}
 	
-	@When("^I open Flights search gadget$")
-	public void openFlightsSearchGadget() {
-		SuperHomePage.openFlightsSearchGadget();
+	
+	@When("^I fill superHomePage form by '(.+)' profile$")
+	public void fillSuperHomePageFormByProfile(String profileName) {
+		SuperHomePage.fillSuperHomePageFormByProfile(profileName);
 	}
 	
-	@When("^I open Car hire search gadget$")
-	public void openCarHireSearchGadget() {
-		SuperHomePage.openCarHireSearchGadget();
-	}
-	
-	@When("^I fill Flights form by minimum profile$")
-	public void fillFlightsFormByMinimumProfile() {
-		SuperHomePage.fillFlightsFormByMinimumProfile();
-	}
-	
-	@When("^I fill Car hire form by minimum profile$")
-	public void fillCarHireFormByMinimumProfile() {
-		SuperHomePage.fillCarHireFormByMinimumProfile();
-	}
-	
-	@When("^I submit Flying Search gadget form$")
-	public void submitFlyingSearchGadgetForm() {
-		SuperHomePage.submitFlyingSearchGadgetForm();
-	}
-	
-	@When("^I submit Car hire Search gadget form$")
-	public void submitCarHireSearchGadgetForm() {
-		SuperHomePage.submitCarHireSearchGadgetForm();
-	}
 	
 	
 	
