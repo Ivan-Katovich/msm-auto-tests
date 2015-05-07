@@ -38,7 +38,7 @@ public abstract class Shop {
 				driver = new FirefoxDriver();
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("can't create driver");
 		}
 	}
 	
@@ -57,6 +57,20 @@ public abstract class Shop {
     	} catch (Exception e) {
     		log.error("Something wrong with profile " + e.getClass());
     		options.setErrorMessage("Something wrong with profile " + e.getClass());
+    		MultiServices.errorShutdown(options);
+    		return null;
+    	}
+    }
+	
+	public static LinkedHashMap<MyElement, String> getMyProfileByName(LinkedHashMap<String, LinkedHashMap<MyElement, String>> map, String profileName) {
+    	log.info("enter to function getMyProfileByName");
+    	options.setDriver(driver);
+    	try {
+    		LinkedHashMap<MyElement, String> myPr = map.get(profileName);
+    		return myPr;
+    	} catch (Exception e) {
+    		log.error("Something wrong with profile map " + e.getClass());
+    		options.setErrorMessage("Something wrong with profile map" + e.getClass());
     		MultiServices.errorShutdown(options);
     		return null;
     	}

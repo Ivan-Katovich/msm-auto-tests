@@ -108,6 +108,22 @@ private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	
 	
 	
+	protected static final LinkedHashMap<String, LinkedHashMap<MyElement, String>> superHomePageProfiles = new LinkedHashMap<String, LinkedHashMap<MyElement, String>>(){{
+		
+		put("minimumFlightsProfile", new LinkedHashMap<MyElement, String>(){{
+										put(Shop.getMyElementByName(superHomePageElements,"airportFlyingFromField"), "Manchester");
+										put(Shop.getMyElementByName(superHomePageElements,"airportFlyingToField"), "Paris");
+										put(Shop.getMyElementByName(superHomePageElements,"departDatePicker"), "20 June 2015");
+										put(Shop.getMyElementByName(superHomePageElements,"returnDatePicker"), "10 July 2015");
+		}});
+		put("minimumCarHireProfile", new LinkedHashMap<MyElement, String>(){{
+										put(Shop.getMyElementByName(superHomePageElements,"pickUpFrom"), "Manchester");
+										put(Shop.getMyElementByName(superHomePageElements,"pickUptDatePicker"), "20 June 2015");
+										put(Shop.getMyElementByName(superHomePageElements,"dropOffDatePicker"), "10 July 2015");
+		}});
+		
+	}};
+	
 	//search gadget profiles
 	protected static final LinkedHashMap<MyElement, String> minimumFlightsProfile = new LinkedHashMap<MyElement, String>(){{
 		put(airportFlyingFromField, "Manchester");
@@ -124,48 +140,24 @@ private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	
 	
 	public static void goToSuperHomePage() {
-		PageShop.goToPage(uri, items);
+		PageShop.goToPage(uri);
 	}
 	
-	public static void checkTheSuperHomePageMainElementsVisibility() {
-		WebElementsShop.assertElementVisible(Shop.getMyElementByName(superHomePageElements, "searchGadgetForm"));
-		WebElementsShop.assertElementVisible(Shop.getMyElementByName(superHomePageElements, "mainLogo"));
+	public static void checkTheSuperHomePageElementIsVisibile(String elementName) {
+		WebElementsShop.assertElementVisible(Shop.getMyElementByName(superHomePageElements, elementName));
 	}
 	
-	public static void checkTheSuperHomePageMainTitleText(String text) throws Throwable {
-		WebElementsShop.assertElementHasText(mainTitle, text);
+	public static void checkTheSuperHomePageElementHasTheText(String elementName, String text) throws Throwable {
+		WebElementsShop.assertElementHasText(Shop.getMyElementByName(superHomePageElements, elementName), text);
 	}
 	
-	public static void checkTheSuperHomePageElementsText(String text1, String text2, String text3, String text4, String text5) throws Throwable {
-		WebElementsShop.assertElementHasText(holidaysFormButton, text1);
-		WebElementsShop.assertElementHasText(flightsFormButton, text2);
-		WebElementsShop.assertElementHasText(carHireFormButton, text3);
-		WebElementsShop.assertElementHasText(hotelsFormButton, text4);
-		WebElementsShop.assertElementHasText(insuranceFormButton, text5);	
+	public static void clickOnSuperHomePageElement(String elementName) {
+		WebElementsShop.clickOnElement(Shop.getMyElementByName(superHomePageElements, elementName));
 	}
 	
-	public static void openFlightsSearchGadget() {
-		WebElementsShop.clickOnElement(flightsFormButton);
+	public static void fillSuperHomePageFormByProfile(String profileName) {
+		FieldsShop.fillFormByProfile(Shop.getMyProfileByName(superHomePageProfiles,profileName));
 	}
 	
-	public static void openCarHireSearchGadget() {
-		WebElementsShop.clickOnElement(carHireFormButton);
-	}
-	
-	public static void fillFlightsFormByMinimumProfile() {
-		FieldsShop.fillFormByProfile(minimumFlightsProfile);
-	}
-	
-	public static void fillCarHireFormByMinimumProfile() {
-		FieldsShop.fillFormByProfile(minimumCarHireProfile);
-	}
-	
-	public static void submitFlyingSearchGadgetForm() {
-		WebElementsShop.clickOnElement(flyingSearchButton);
-	}
-	
-	public static void submitCarHireSearchGadgetForm() {
-		WebElementsShop.clickOnElement(carHireSearchButton);
-	}
 
 }

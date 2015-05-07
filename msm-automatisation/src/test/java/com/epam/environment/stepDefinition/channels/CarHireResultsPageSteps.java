@@ -15,7 +15,7 @@ public class CarHireResultsPageSteps {
 	
 	public CarHireResultsPageSteps() {}
 	
-	@Then("^I am taken to the Car hire results page$")
+	@Then("^I am taken to the CarHireResults page$")
 	public void assertOnCarHirePage() {
 		CarHireResultsPage.assertOnCarHirePage();
 	}
