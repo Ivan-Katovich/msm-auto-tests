@@ -33,10 +33,10 @@ private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 		
 		//new search gadget
 		put("searchGadgetForm", new MyElement("//div[contains(@class,'searchGadgetForm__form-wrap')]", "webElement"));
-		put("carHireFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[3]", "button"));
+		put("carHireFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[4]", "button"));
 		put("flightsFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[2]", "button"));
 		put("holidaysFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[1]", "button"));
-		put("hotelsFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[4]", "button"));
+		put("hotelsFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[3]", "button"));
 		put("insuranceFormButton", new MyElement("(//button[contains(@class,'searchGadgetForm__channelOption')])[5]", "button"));
 		
 		//flights search gadget form
@@ -78,10 +78,10 @@ private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	
 	//new search gadget
 	protected static final MyElement searchGadgetForm = new MyElement("searchGadgetForm", "//div[contains(@class,'searchGadgetForm__form-wrap')]", "webElement");
-	protected static final MyElement carHireFormButton = new MyElement("carHireFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[3]", "button");
+	protected static final MyElement carHireFormButton = new MyElement("carHireFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[4]", "button");
 	protected static final MyElement flightsFormButton = new MyElement("flightsFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[2]", "button");
 	protected static final MyElement holidaysFormButton = new MyElement("holidaysFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[1]", "button");
-	protected static final MyElement hotelsFormButton = new MyElement("hotelsFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[4]", "button");
+	protected static final MyElement hotelsFormButton = new MyElement("hotelsFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[3]", "button");
 	protected static final MyElement insuranceFormButton = new MyElement("insuranceFormButton", "(//button[contains(@class,'searchGadgetForm__channelOption')])[5]", "button");
 	
 	//flights search gadget form
