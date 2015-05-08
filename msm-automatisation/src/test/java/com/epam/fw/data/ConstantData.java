@@ -14,7 +14,7 @@ public final class ConstantData {
 	
 	//seleniun grid
 	public static final String SELENIUM_HOST_WORKST = "10.6.205.25";
-	public static final String SELENIUM_HOST_WORKNOTE = "10.6.60.65";
+	public static final String SELENIUM_HOST_WORKNOTE = "10.6.169.248";
 	public static final String SELENIUM_HOST_LOCAL = "localhost";
 	public static final String SELENIUM_HOST_HOME = "192.168.0.101";
 	public static final String SELENIUM_PORT = "4444";

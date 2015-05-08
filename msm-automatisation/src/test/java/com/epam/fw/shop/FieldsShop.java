@@ -67,9 +67,10 @@ public class FieldsShop extends Shop {
 				FieldsServices.sendTextToField(options);
 //				WebElementsShop.clickOnElement(myElement, driver);
 				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
+//				WebElementsShop.clickOnElement(myElement);
 				// for TSM project needs to check on another
 				try {
-					Thread.sleep(500);
+					Thread.sleep(700);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

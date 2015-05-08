@@ -12,7 +12,11 @@ import cucumber.api.junit.Cucumber;
 		,glue="com/epam/environment/stepDefinition"
 		,monochrome = true
 		,tags = {"@second"}
-		,format = {"pretty","html:reports/second"}
+		,format = {"pretty"
+				,"html:reports/second"
+				,"junit:reports/xml/secondCucumber.xml"
+				,"json:reports/json/secondCucumber.json"
+				}
 //		,dryRun = true
 		)
 

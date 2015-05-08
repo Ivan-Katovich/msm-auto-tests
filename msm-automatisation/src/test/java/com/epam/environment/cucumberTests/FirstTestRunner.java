@@ -17,7 +17,11 @@ import cucumber.api.junit.Cucumber;
 		,glue="com/epam/environment/stepDefinition"
 		,monochrome = true
 		,tags = {"@first"}
-		,format = {"pretty","html:reports/first"}
+		,format = {"pretty"
+				,"html:reports/first"
+				,"junit:reports/xml/firstCucumber.xml"
+				,"json:reports/json/firstCucumber.json"
+				}
 //		,dryRun = true
 		)
  
