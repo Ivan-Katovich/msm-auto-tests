@@ -4,6 +4,7 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
@@ -19,7 +20,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 
+
+
 import com.epam.environment.pageObjects.Page;
+import com.epam.fw.shop.Shop;
 
 import static com.epam.fw.data.ConstantData.*;
 
@@ -35,7 +39,8 @@ public class Hooks {
 	}
 	
 	@After
-	public void shutdownTestComplect() throws Exception{
+	public void shutdownTestComplect(Scenario scenario) throws Exception{
+		Shop.screenInAfter(scenario);
 		Page.shutdownTestComplect();
 	}
 
