@@ -35,7 +35,7 @@ public class MultiServices {
 		try {
 			FileUtils.copyFile(file, screen);
 			log.error("You can see the screenshot with error by link " + screen.getAbsolutePath());
-			String errMes = options.getErrorMessage() + "\n You can see the screenshot with error by link " + screen.getAbsolutePath();
+			String errMes = options.getErrorMessage() + "\n You can see the screenshot with error by link \n" + screen.getAbsolutePath();
 			options.setErrorMessage(errMes);
 		} catch (IOException e) {
 			log.error("have an error with get screenshot" + e);

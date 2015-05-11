@@ -14,6 +14,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.epam.fw.object.MyElement;
 import com.epam.fw.object.Options;
 import com.epam.fw.services.MultiServices;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import cucumber.api.Scenario;
 
 public abstract class Shop {
 	
@@ -38,8 +42,21 @@ public abstract class Shop {
 				driver = new FirefoxDriver();
 			}
 		} catch (Exception e) {
-			log.error("can't create driver");
+			
 		}
+	}
+	
+	public static void screenInAfter(Scenario scenario) {
+		try {
+            if (scenario.isFailed()) {
+            	log.error(" ====== scenario is failed");
+                final byte[] screenshot = ((TakesScreenshot) driver)
+                        .getScreenshotAs(OutputType.BYTES);
+                scenario.embed(screenshot, "image/png");
+            } 
+		} catch (Exception e) {
+        	e.printStackTrace();
+        }
 	}
 	
 	public static void shutDownDriver() {
