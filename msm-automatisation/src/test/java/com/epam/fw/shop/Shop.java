@@ -7,6 +7,7 @@ import java.util.LinkedHashMap;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -14,6 +15,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.epam.fw.object.MyElement;
 import com.epam.fw.object.Options;
 import com.epam.fw.services.MultiServices;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -32,11 +34,22 @@ public abstract class Shop {
 			case "Firefox":
 				driver = new FirefoxDriver();
 				break;
+			case "Chrome":
+				System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");
+				driver = new ChromeDriver();
+				break;
 			case "RemoteFirefox":
-				URL gridHost = new URL("http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
+				URL gridFirefoxHost = new URL("http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
 //				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
-				DesiredCapabilities capability = DesiredCapabilities.firefox();
-				driver = new RemoteWebDriver(gridHost, capability);
+				DesiredCapabilities firefoxCapability = DesiredCapabilities.firefox();
+				driver = new RemoteWebDriver(gridFirefoxHost, firefoxCapability);
+				break;
+			case "RemoteChrome":
+//				System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");
+				URL gridChromeHost = new URL("http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
+				log.error(" ==== connect to http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
+				DesiredCapabilities chromeCapability = DesiredCapabilities.chrome();
+				driver = new RemoteWebDriver(gridChromeHost, chromeCapability);
 				break;
 			default:
 				driver = new FirefoxDriver();

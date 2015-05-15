@@ -34,7 +34,7 @@ public class Hooks {
 	
 	@Before
 	public void startTestComplect() throws Exception{
-		Page.startTestComplect("RemoteFirefox");
+		Page.startTestComplect("RemoteChrome");
 		
 	}
 	
