@@ -92,26 +92,26 @@ public abstract class Shop {
 			log.error("http://"+gridURI+gridPort+"/wd/hub");
 			
 			switch (driverType) {
-			case "Firefox":
-				driver = new FirefoxDriver();
-				break;
-			case "Chrome":
-				System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");
-				driver = new ChromeDriver();
-				break;
-			case "RemoteFirefox":
-//				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
-				DesiredCapabilities firefoxCapability = DesiredCapabilities.firefox();
-				driver = new RemoteWebDriver(gridHost, firefoxCapability);
-				break;
-			case "RemoteChrome":
-//				System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");;
-				log.error(" ==== connect to http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
-				DesiredCapabilities chromeCapability = DesiredCapabilities.chrome();
-				driver = new RemoteWebDriver(gridHost, chromeCapability);
-				break;
-			default:
-				driver = new FirefoxDriver();
+				case "Firefox":
+					driver = new FirefoxDriver();
+					break;
+				case "Chrome":
+					System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");
+					driver = new ChromeDriver();
+					break;
+				case "RemoteFirefox":
+//					log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
+					DesiredCapabilities firefoxCapability = DesiredCapabilities.firefox();
+					driver = new RemoteWebDriver(gridHost, firefoxCapability);
+					break;
+				case "RemoteChrome":
+//					System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");;
+					log.error(" ==== connect to http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
+					DesiredCapabilities chromeCapability = DesiredCapabilities.chrome();
+					driver = new RemoteWebDriver(gridHost, chromeCapability);
+					break;
+				default:
+					driver = new FirefoxDriver();
 			}
 		} catch (Exception e) {
 			options.setErrorMessage("Can't setup " + driverType + " because " + e.getMessage());
