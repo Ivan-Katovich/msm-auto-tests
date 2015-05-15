@@ -3,6 +3,9 @@
   <groupId>Test</groupId>
   <artifactId>MoneySuperMarket</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <dependencies>
   	<dependency>
   		<groupId>info.cukes</groupId>
@@ -63,6 +66,7 @@
         <configuration>
           <source>1.7</source>
           <target>1.7</target>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
