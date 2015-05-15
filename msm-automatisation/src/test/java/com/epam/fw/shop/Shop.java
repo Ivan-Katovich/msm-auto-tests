@@ -93,7 +93,7 @@ public abstract class Shop {
 					gridPort = ":"+SELENIUM_PORT;
 			}
 			URL gridHost = new URL("http://"+gridURI+gridPort+"/wd/hub");
-			log.error("http://"+gridURI+gridPort+"/wd/hub");
+//			log.error("http://"+gridURI+gridPort+"/wd/hub");
 			System.out.println("http://"+gridURI+gridPort+"/wd/hub");
 			
 			switch (driverType) {
