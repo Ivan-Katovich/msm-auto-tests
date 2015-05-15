@@ -29,12 +29,27 @@ import static com.epam.fw.data.ConstantData.*;
 
 public class Hooks {
 	
+	//remote drivers
+	private static final String remoteChrome = "RemoteChrome";
+	private static final String remoteFirefox = "RemoteFirefox";
+	
+	//drivers
+	private static final String chrome = "Chrome";
+	private static final String firefox = "Firefox";
+	
+	//grid hosts
+	private static final String tsmGrid = "TSMGrid";
+	private static final String localGrid = "LocalGrid";
+	private static final String homeGrid = "HomeGrid";
+	private static final String workGrid = "WorkGrid";
+	
+	
 	public Hooks() {
 	}
 	
 	@Before
 	public void startTestComplect() throws Exception{
-		Page.startTestComplect("RemoteChrome");
+		Page.startTestComplect(remoteChrome,tsmGrid);
 		
 	}
 	

@@ -17,7 +17,7 @@ public final class ConstantData {
 	public static final String SELENIUM_HOST_WORKNOTE = "10.6.169.248";
 	public static final String SELENIUM_HOST_LOCAL = "localhost";
 	public static final String SELENIUM_HOST_HOME = "192.168.0.101";
-	public static final String SELENIUM_HOST_TSM = "http://services.ci1-cms.gb.travelsupermarket.com";
+	public static final String SELENIUM_HOST_TSM = "services.ci1-cms.gb.travelsupermarket.com";
 	public static final String SELENIUM_PORT = "4444";
 	
 	//elements

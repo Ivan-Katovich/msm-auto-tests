@@ -11,6 +11,10 @@ public class Page {
 		Shop.setUpDriver(driverName);
 	}
 	
+	public static void startTestComplect(String driverName, String gridHostName) {
+		Shop.setUpDriver(driverName,gridHostName);
+	}
+	
 	public static void shutdownTestComplect() {
 		Shop.shutDownDriver();
 	}
