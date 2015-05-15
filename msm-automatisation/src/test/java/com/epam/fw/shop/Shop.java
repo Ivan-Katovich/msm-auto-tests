@@ -84,6 +84,10 @@ public abstract class Shop {
 					gridURI = SELENIUM_HOST_WORKST;
 					gridPort = ":"+SELENIUM_PORT;
 					break;
+				case "TSMJenkinsGrid":
+					gridURI = SELENIUM_HOST_TSMJENKINS;
+					gridPort = ":"+SELENIUM_PORT;
+					break;
 				default:
 					gridURI = SELENIUM_HOST_LOCAL;
 					gridPort = ":"+SELENIUM_PORT;
