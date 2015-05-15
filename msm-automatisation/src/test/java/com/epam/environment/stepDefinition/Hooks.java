@@ -39,6 +39,7 @@ public class Hooks {
 	
 	//grid hosts
 	private static final String tsmGrid = "TSMGrid";
+	private static final String tsmJenkinsGrid = "TSMJenkinsGrid";
 	private static final String localGrid = "LocalGrid";
 	private static final String homeGrid = "HomeGrid";
 	private static final String workGrid = "WorkGrid";
@@ -49,7 +50,7 @@ public class Hooks {
 	
 	@Before
 	public void startTestComplect() throws Exception{
-		Page.startTestComplect(remoteChrome,tsmGrid);
+		Page.startTestComplect(remoteChrome,tsmJenkinsGrid);
 		
 	}
 	
