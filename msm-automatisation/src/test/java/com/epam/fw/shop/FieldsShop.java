@@ -63,21 +63,33 @@ public class FieldsShop extends Shop {
 				log.info("Datpicker option is selected");
 				break;
 			case "autocomplete":
-//				Actions actions = new Actions(driver);
 				FieldsServices.sendTextToField(options);
-//				WebElementsShop.clickOnElement(myElement, driver);
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
-//				WebElementsShop.clickOnElement(myElement);
 				// for TSM project needs to check on another
 				try {
-					Thread.sleep(700);
+					Thread.sleep(200);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
-					WebElementsShop.clickOnElement(myElement);
+					log.error(" ===== in if");
+					while (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
+						log.error(" ===== in while");
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						log.error(" ===== after sleep");
+						WebElementsShop.clickOnElement(myElement);
+						log.error(" ===== after click");
+					}
 				}
-//				actions.keyDown(autocomplete, Keys.ENTER).keyUp(autocomplete, Keys.ENTER).perform();
 				log.info("Text entered in the textfield");
 				break;	
 			default:
