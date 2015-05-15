@@ -26,7 +26,7 @@ public abstract class Shop {
 	protected static Options options = new Options();	
 	protected static WebDriver driver;
 	
-	private static final Logger log = Logger.getLogger(Shop.class);
+//	private static final Logger log = Logger.getLogger(Shop.class);
 	
 	public static void setUpDriver(String driverType) {
 		try {
@@ -47,7 +47,7 @@ public abstract class Shop {
 			case "RemoteChrome":
 //				System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");
 				URL gridChromeHost = new URL("http://selenium-hub1.inf1.gb.tsm.internal:4444/wd/hub");
-				log.error(" ==== connect to http://selenium-hub1.inf1.gb.tsm.internal:4444/wd/hub");
+//				log.error(" ==== connect to http://selenium-hub1.inf1.gb.tsm.internal:4444/wd/hub");
 				DesiredCapabilities chromeCapability = DesiredCapabilities.chrome();
 				driver = new RemoteWebDriver(gridChromeHost, chromeCapability);
 				break;
@@ -125,7 +125,7 @@ public abstract class Shop {
 	public static void screenInAfter(Scenario scenario) {
 		try {
             if (scenario.isFailed()) {
-            	log.error(" ====== scenario is failed");
+//            	log.error(" ====== scenario is failed");
                 final byte[] screenshot = ((TakesScreenshot) driver)
                         .getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");
@@ -141,14 +141,14 @@ public abstract class Shop {
 	}
 	
 	public static MyElement getMyElementByName(LinkedHashMap<String, MyElement> map, String elementName) {
-    	log.info("enter to function getElementByName");
+//    	log.info("enter to function getElementByName");
     	options.setDriver(driver);
     	try {
     		MyElement myEl = map.get(elementName);
     		myEl.setName(elementName);
     		return myEl;
     	} catch (Exception e) {
-    		log.error("Something wrong with profile " + e.getClass());
+//    		log.error("Something wrong with profile " + e.getClass());
     		options.setErrorMessage("Something wrong with profile " + e.getClass());
     		MultiServices.errorShutdown(options);
     		return null;
@@ -156,13 +156,13 @@ public abstract class Shop {
     }
 	
 	public static LinkedHashMap<MyElement, String> getMyProfileByName(LinkedHashMap<String, LinkedHashMap<MyElement, String>> map, String profileName) {
-    	log.info("enter to function getMyProfileByName");
+//    	log.info("enter to function getMyProfileByName");
     	options.setDriver(driver);
     	try {
     		LinkedHashMap<MyElement, String> myPr = map.get(profileName);
     		return myPr;
     	} catch (Exception e) {
-    		log.error("Something wrong with profile map " + e.getClass());
+//    		log.error("Something wrong with profile map " + e.getClass());
     		options.setErrorMessage("Something wrong with profile map" + e.getClass());
     		MultiServices.errorShutdown(options);
     		return null;
