@@ -50,7 +50,7 @@ public class Hooks {
 	
 	@Before
 	public void startTestComplect() throws Exception{
-		Page.startTestComplect(remoteChrome,tsmJenkinsGrid);
+		Page.startTestComplect(remoteFirefox,tsmJenkinsGrid);
 		
 	}
 	
