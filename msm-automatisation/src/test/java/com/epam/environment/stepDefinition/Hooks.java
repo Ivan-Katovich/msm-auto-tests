@@ -49,8 +49,12 @@ public class Hooks {
 	}
 	
 	@Before
-	public void startTestComplect() throws Exception{
-		Page.startTestComplect(remoteChrome,tsmGrid);
+	public void startTestComplect() {
+		try {
+			Page.startTestComplect(remoteChrome,tsmGrid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
