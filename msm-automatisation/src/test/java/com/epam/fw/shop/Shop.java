@@ -26,7 +26,7 @@ public abstract class Shop {
 	protected static Options options = new Options();	
 	protected static WebDriver driver;
 	
-//	private static final Logger log = Logger.getLogger(Shop.class);
+	private static final Logger log = Logger.getLogger(Shop.class);
 	
 	public static void setUpDriver(String driverType) {
 		try {
@@ -40,14 +40,14 @@ public abstract class Shop {
 				break;
 			case "RemoteFirefox":
 				URL gridFirefoxHost = new URL("http://"+SELENIUM_HOST_LOCAL+":"+SELENIUM_PORT+"/wd/hub");
-//				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
+				log.error(" ==== connect to http://"+SELENIUM_HOST_WORKST+":"+SELENIUM_PORT+"/wd/hub");
 				DesiredCapabilities firefoxCapability = DesiredCapabilities.firefox();
 				driver = new RemoteWebDriver(gridFirefoxHost, firefoxCapability);
 				break;
 			case "RemoteChrome":
 //				System.setProperty("webdriver.chrome.driver", "additional_libraries/chromedriver.exe");
 				URL gridChromeHost = new URL("http://selenium-hub1.inf1.gb.tsm.internal:4444/wd/hub");
-//				log.error(" ==== connect to http://selenium-hub1.inf1.gb.tsm.internal:4444/wd/hub");
+				log.error(" ==== connect to http://selenium-hub1.inf1.gb.tsm.internal:4444/wd/hub");
 				DesiredCapabilities chromeCapability = DesiredCapabilities.chrome();
 				driver = new RemoteWebDriver(gridChromeHost, chromeCapability);
 				break;

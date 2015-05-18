@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
+//import org.sikuli.script.Pattern;
+//import org.sikuli.script.Screen;
 
 import com.epam.fw.services.ImageServices;
 import com.epam.fw.services.MultiServices;
@@ -24,8 +24,8 @@ public class Options {
 	private int timeout = TIME_OUT;
 	private int pooling = POOLING;
 	private By selector;
-	private Pattern pattern;
-	private Screen screen = new Screen();
+//	private Pattern pattern;
+//	private Screen screen = new Screen();
 	private MyElement myElement;
 	private MyElement childElement;
 	private MyImage myImage;
@@ -115,31 +115,31 @@ public class Options {
 		return myImage;
 	}
 
-	public void setMyImage(MyImage myImage) {
-		this.myImage = myImage;
-		if (!ImageServices.isImagePathCorrect(this)) {
-			log.error("Image with path = " + myImage.getPath() + " is not present");
-			MultiServices.errorShutdown(this);
-		} else {
-			this.pattern = new Pattern(myImage.getPath());
-		}
-	}
-
-	public Pattern getPattern() {
-		return pattern;
-	}
-
-	public void setPattern(Pattern pattern) {
-		this.pattern = pattern;
-	}
-
-	public Screen getScreen() {
-		return screen;
-	}
-
-	public void setScreen(Screen screen) {
-		this.screen = screen;
-	}
+//	public void setMyImage(MyImage myImage) {
+//		this.myImage = myImage;
+//		if (!ImageServices.isImagePathCorrect(this)) {
+//			log.error("Image with path = " + myImage.getPath() + " is not present");
+//			MultiServices.errorShutdown(this);
+//		} else {
+//			this.pattern = new Pattern(myImage.getPath());
+//		}
+//	}
+//
+//	public Pattern getPattern() {
+//		return pattern;
+//	}
+//
+//	public void setPattern(Pattern pattern) {
+//		this.pattern = pattern;
+//	}
+//
+//	public Screen getScreen() {
+//		return screen;
+//	}
+//
+//	public void setScreen(Screen screen) {
+//		this.screen = screen;
+//	}
 
 	public String getText() {
 		return text;
