@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -23,233 +23,233 @@ import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 
 public class WebElementsServices {
 	
-	private static final Logger log = Logger.getLogger(WebElementsServices.class); 
+//	private static final Logger log = Logger.getLogger(WebElementsServices.class); 
     
     public static boolean waitElementIsVisible(Options options) {
-    	log.info("enter to function waitElementIsVisible with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function waitElementIsVisible with element '" + options.getMyElement().getName() + "'");
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
     	
     	if (time>=endTime) {
-    		log.error("Timeout is not correct ");
+//    		log.error("Timeout is not correct ");
     		return false;
     	} else {
     		try {
     			WebElement element = options.getWebElement();
     			if (element.isDisplayed()) {
-    				log.info("element '" + options.getMyElement().getName() + "' is displayed ");
+//    				log.info("element '" + options.getMyElement().getName() + "' is displayed ");
     				return true;
     			} else {
-    				log.warn("element '" + options.getMyElement().getName() + "'is not displayed now ");
+//    				log.warn("element '" + options.getMyElement().getName() + "'is not displayed now ");
     				while (!element.isDisplayed() && time <= endTime) {
-    					log.info(time + " lower " + endTime );
+//    					log.info(time + " lower " + endTime );
     					try {
     						Thread.sleep(pooling);
     					} catch (InterruptedException e) {
-    						log.error(e.getClass());
+//    						log.error(e.getClass());
     					}
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("Element '" + options.getMyElement().getName() + "' is not displayed ");
+//    					log.error("Element '" + options.getMyElement().getName() + "' is not displayed ");
     					return false;
     				} else {
-    					log.info("element '" + options.getMyElement().getName() + "' is displayed now ");
+//    					log.info("element '" + options.getMyElement().getName() + "' is displayed now ");
     					return true;
     				}
     			}
     		}
     		catch (NoSuchElementException e) {
-    			log.error(e.getClass());
+//    			log.error(e.getClass());
     			return false;
     		}
     	}
     }
     
     public static boolean waitElementIsPresent(Options options) {
-    	log.info("enter to function waitElementIsPresent with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function waitElementIsPresent with element '" + options.getMyElement().getName() + "'");
     	
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
     	
     	if (time>=endTime) {
-    		log.error("Timeout is not correct ");
+//    		log.error("Timeout is not correct ");
     		return false;
     	} else {
     		try {
     			if (options.getDriver().findElements(options.getSelector()).size()>0) {
-    				log.info("element '" + options.getMyElement().getName() + "' is present ");
+//    				log.info("element '" + options.getMyElement().getName() + "' is present ");
     				return true;
     			} else {
-    				log.warn("element '" + options.getMyElement().getName() + "' is not present now ");
+//    				log.warn("element '" + options.getMyElement().getName() + "' is not present now ");
     				while (options.getDriver().findElements(options.getSelector()).size()<1 && time <= endTime) {
-    					log.info(time + " lower " + endTime );
+//    					log.info(time + " lower " + endTime );
     					try {
     						Thread.sleep(pooling);
     					} catch (InterruptedException e) {
-    						log.error(e.getClass());
+//    						log.error(e.getClass());
     					}
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("Element '" + options.getMyElement().getName() + "' is not present ");
+//    					log.error("Element '" + options.getMyElement().getName() + "' is not present ");
     					return false;
     				} else {
-    					log.info("element '" + options.getMyElement().getName() + "' is present now ");
+//    					log.info("element '" + options.getMyElement().getName() + "' is present now ");
     					return true;
     				}
     			}
     		}
     		catch (Exception e) {
-    			log.error(e.getClass());
+//    			log.error(e.getClass());
     			return false;
     		}
     	}
     }
     
     public static boolean waitForDynamicTextPresent(Options options) {
-    	log.info("enter to function waitElementIsPresent with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function waitElementIsPresent with element '" + options.getMyElement().getName() + "'");
     	
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
     	
     	if (time>=endTime) {
-    		log.error("Timeout is not correct ");
+//    		log.error("Timeout is not correct ");
     		return false;
     	} else {
     		try {
     			if (options.getDriver().findElement(options.getSelector()).getText().equals(options.getText())) {
-    				log.info("element '" + options.getMyElement().getName() + "' has the text '" + options.getText() + "' it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
+//    				log.info("element '" + options.getMyElement().getName() + "' has the text '" + options.getText() + "' it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
     				return true;
     			} else {
-    				log.warn("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "'");
+//    				log.warn("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "'");
     				while (!options.getDriver().findElement(options.getSelector()).getText().equals(options.getText()) && time <= endTime) {
-    					log.info(time + " lower " + endTime );
+//    					log.info(time + " lower " + endTime );
     					try {
     						Thread.sleep(pooling);
     					} catch (InterruptedException e) {
-    						log.error(e.getClass());
+//    						log.error(e.getClass());
     					}
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "' after timeout, it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
+//    					log.error("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "' after timeout, it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
     					options.setErrorMessage("element '" + options.getMyElement().getName() + "' has not the text '" + options.getText() + "' after timeout, it is '" + options.getDriver().findElement(options.getSelector()).getText() + "'");
     					return false;
     				} else {
-    					log.info("element '" + options.getMyElement().getName() + "' has the text '" + options.getText() + "' now");
+//    					log.info("element '" + options.getMyElement().getName() + "' has the text '" + options.getText() + "' now");
     					return true;
     				}
     			}
     		}
     		catch (Exception e) {
-    			log.error(e.getClass());
+//    			log.error(e.getClass());
     			return false;
     		}
     	}
     }
     
     public static boolean waitElementIsNotVisible(Options options) {
-    	log.info("enter to function waitElementIsNotVisible with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function waitElementIsNotVisible with element '" + options.getMyElement().getName() + "'");
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
     	
     	if (time>=endTime) {
-    		log.error("Timeout is not correct ");
+//    		log.error("Timeout is not correct ");
     		return false;
     	} else {
     		try {
     			WebElement element = options.getWebElement();
     			if (!element.isDisplayed()) {
-    				log.info("element '" + options.getMyElement().getName() + "' is not displayed ");
+//    				log.info("element '" + options.getMyElement().getName() + "' is not displayed ");
     				return true;
     			} else {
-    				log.warn("element '" + options.getMyElement().getName() + "' is displayed now ");
+//    				log.warn("element '" + options.getMyElement().getName() + "' is displayed now ");
     				while (element.isDisplayed() && time <= endTime) {
-    					log.info(time + " lower " + endTime );
+//    					log.info(time + " lower " + endTime );
     					try {
     						Thread.sleep(pooling);
     					} catch (InterruptedException e) {
-    						log.error(e.getClass());
+//    						log.error(e.getClass());
     					}
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("Element '" + options.getMyElement().getName() + "' is displayed ");
+//    					log.error("Element '" + options.getMyElement().getName() + "' is displayed ");
     					return false;
     				} else {
-    					log.info("element '" + options.getMyElement().getName() + "' is not displayed now ");
+//    					log.info("element '" + options.getMyElement().getName() + "' is not displayed now ");
     					return true;
     				}
     			}
     		}
     		catch (NoSuchElementException e) {
-    			log.error(e.getClass());
+//    			log.error(e.getClass());
     			return false;
     		}
     	}
     }
     
     public static String getAttributeValue(Options options) {
-    	log.info("enter to function getAttributeValue with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function getAttributeValue with element '" + options.getMyElement().getName() + "'");
     	try {
     		return options.getWebElement().getAttribute(options.getName());
     	} catch (Exception e) {
-    		log.error("Something wrong " + e.getClass());
+//    		log.error("Something wrong " + e.getClass());
     		return null;
     	}
     }
     
     public static String getElementText(Options options) {
-    	log.info("enter to function getText with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function getText with element '" + options.getMyElement().getName() + "'");
     	try {
     		return options.getWebElement().getText();
     	} catch (Exception e) {
-    		log.error("Something wrong " + e.getClass());
+//    		log.error("Something wrong " + e.getClass());
     		return null;
     	}
     }
     
     public static boolean setAttributeValue(Options options) {
-    	log.info("enter to function setAttributeValue with element '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function setAttributeValue with element '" + options.getMyElement().getName() + "'");
     	String xpath = options.getMyElement().getXpath();
     	try {
     		JavascriptExecutor executor = (JavascriptExecutor) options.getDriver();
-    		log.info("Try to execute script: document.getElementByXPath = function(sValue) { var a = this.evaluate(sValue, this, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null); if (a.snapshotLength > 0) { return a.snapshotItem(0); } };" +
-    				"document.getElementByXPath(\"" + xpath + "\").setAttribute(\"" + options.getName() + "\", \"" + options.getText() +"\")");
+//    		log.info("Try to execute script: document.getElementByXPath = function(sValue) { var a = this.evaluate(sValue, this, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null); if (a.snapshotLength > 0) { return a.snapshotItem(0); } };" +
+//    				"document.getElementByXPath(\"" + xpath + "\").setAttribute(\"" + options.getName() + "\", \"" + options.getText() +"\")");
     		executor.executeScript(
     				"document.getElementByXPath = function(sValue) { var a = this.evaluate(sValue, this, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null); if (a.snapshotLength > 0) { return a.snapshotItem(0); } };" +
     				"document.getElementByXPath(\"" + xpath + "\").setAttribute(\"" + options.getName() + "\", \"" + options.getText() +"\")"
     				);
     		return true;
     	} catch (Exception e) {
-    		log.error("Something wrong " + e.getClass());
+//    		log.error("Something wrong " + e.getClass());
     		return false;
     	}
     }
     
     public static int getElementsNumber(Options options) {
-    	log.info("enter to function getElementsNumber with elements '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function getElementsNumber with elements '" + options.getMyElement().getName() + "'");
     	String itemType = options.getMyElement().getType();
     	if (itemType == "groupOfElements") {
     		return options.getDriver().findElements(By.xpath(options.getMyElement().getXpath())).size();
     	} else {
-    		log.info("Item type is " + itemType + " but needed groupOfElements ");
+//    		log.info("Item type is " + itemType + " but needed groupOfElements ");
     		return -1;
     	}
     }
     
     public static int getElementWithTextPosition(Options options) {
-    	log.info("enter to function getElementWithTextPosition ");
+//    	log.info("enter to function getElementWithTextPosition ");
     	int matchNumber = 0;
     	int position = 0;
     	ArrayList<WebElement> list = getArrayOfElements(options);
     	if (list == null) {
-    		log.info("Item type is " + options.getMyElement().getType() + " but needed groupOfElements ");
+//    		log.info("Item type is " + options.getMyElement().getType() + " but needed groupOfElements ");
     		return -1;
     	} else {
     		for (WebElement element : list) {
@@ -271,12 +271,12 @@ public class WebElementsServices {
     }
     
     public static int getElementContainsTextPosition(Options options) {
-    	log.info("enter to function getElementContainsTextPosition ");
+//    	log.info("enter to function getElementContainsTextPosition ");
     	int matchNumber = 0;
     	int position = 0;
     	ArrayList<WebElement> list = getArrayOfElements(options);
     	if (list == null) {
-    		log.info("Item type is " + options.getMyElement().getType() + " but needed groupOfElements ");
+//    		log.info("Item type is " + options.getMyElement().getType() + " but needed groupOfElements ");
     		return -1;
     	} else { 
     		for (WebElement element : list) {
@@ -298,7 +298,7 @@ public class WebElementsServices {
     }
     
     public static Float getNumberFromElementText(Options options) {
-    	log.info("enter to function getNumberFromElementText with elements '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function getNumberFromElementText with elements '" + options.getMyElement().getName() + "'");
     	String text = getElementText(options);
     	if (text.equals(null)) {
     		return null;
@@ -309,36 +309,36 @@ public class WebElementsServices {
     			Float numberInText = Float.parseFloat(mat.group());
     			return numberInText;
     		} else {
-    			log.warn("No numbers in this text ");
+//    			log.warn("No numbers in this text ");
     			return null;
     		}
     	}
     }
     
     public static ArrayList<WebElement> getArrayOfElements(Options options) {
-    	log.info("enter to function getArrayOfElements with group of elements '" + options.getMyElement().getName() + "'");
+//    	log.info("enter to function getArrayOfElements with group of elements '" + options.getMyElement().getName() + "'");
     	ArrayList<WebElement> list;
     	String itemType = options.getMyElement().getType();
     	if (itemType == "groupOfElements") {
     		list = (ArrayList<WebElement>)options.getDriver().findElements(By.xpath(options.getMyElement().getXpath()));
     		return list;
     	} else {
-    		log.warn("Item type is '" + itemType + "' but needed 'groupOfElements' ");
+//    		log.warn("Item type is '" + itemType + "' but needed 'groupOfElements' ");
     		return null;
     	}
     }
     
     public static boolean executeJavascript(Options options, String script) {
-    	log.info("enter to function executeJavascript");
+//    	log.info("enter to function executeJavascript");
     	try {
     		JavascriptExecutor executor = (JavascriptExecutor) options.getDriver();
-    		log.info("Try to execute script: " + script);
+//    		log.info("Try to execute script: " + script);
     		executor.executeScript(
     				script
     				);
     		return true;
     	} catch (Exception e) {
-    		log.error("Something wrong " + e.getClass());
+//    		log.error("Something wrong " + e.getClass());
     		return false;
     	}
     }

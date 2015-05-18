@@ -1,6 +1,6 @@
 package com.epam.fw.shop;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import com.epam.fw.object.Options;
@@ -12,23 +12,23 @@ import static com.epam.fw.data.ConstantData.*;
 
 public class PageShop extends Shop{
 	
-	private static final Logger log = Logger.getLogger(PageShop.class);
+//	private static final Logger log = Logger.getLogger(PageShop.class);
 	
 	public static void goToPage(String uri) {
 		options.setDriver(driver);
 		options.setUri(uri);
 		String fullUri = PageServices.urlCreator(options);
 		if (fullUri == null) {
-			log.error("URL is not defined");
+//			log.error("URL is not defined");
 			options.setErrorMessage("URL is not defined");
 			MultiServices.errorShutdown(options);
 		}
-		log.info("enter to function goToPage with URL '" +fullUri + "'");
+//		log.info("enter to function goToPage with URL '" +fullUri + "'");
 		driver.get(fullUri);
 		if (PageServices.waitForPageLoaded(options)) {
-			log.info("Page was loaded");
+//			log.info("Page was loaded");
 		} else {
-			log.error("page didn't load");
+//			log.error("page didn't load");
 			options.setErrorMessage("page didn't load");
 			MultiServices.errorShutdown(options);
 		}
@@ -38,12 +38,12 @@ public class PageShop extends Shop{
 		options.setDriver(driver);
 		options.setUri(uri);
 		options.setItems(items);
-		log.info("enter to function goToPage with URL '" + PageServices.urlCreator(options) + "'");
+//		log.info("enter to function goToPage with URL '" + PageServices.urlCreator(options) + "'");
 		driver.get(PageServices.urlCreator(options));
 		if (PageServices.waitForPageLoaded(options)) {
-			log.info("Page was loaded");
+//			log.info("Page was loaded");
 		} else {
-			log.error("page didn't load");
+//			log.error("page didn't load");
 			options.setErrorMessage("page didn't load");
 			MultiServices.errorShutdown(options);
 		}
@@ -54,37 +54,37 @@ public class PageShop extends Shop{
 		String actualUri = PageServices.getPageCurrentUrl(options);
 		options.setUri(actualUri);
 		if (PageServices.waitForPageLoaded(options)) {
-			log.info("Page was loaded");
+//			log.info("Page was loaded");
 		} else {
-			log.error("page didn't load");
+//			log.error("page didn't load");
 			options.setErrorMessage("page didn't load");
 			MultiServices.errorShutdown(options);
 		}
 	}
 	
 	public static void assertOnPageWithUrl(String expectedUri) {
-		log.info("enter to function assertOnPageWithUrl with URL '" + BASE_URI + expectedUri + "'");
+//		log.info("enter to function assertOnPageWithUrl with URL '" + BASE_URI + expectedUri + "'");
 		options.setDriver(driver);
 		String actualUri = PageServices.getPageCurrentUrl(options);
 		if (actualUri.indexOf(BASE_URI+expectedUri) == -1 || actualUri.equals(null)) {
-			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
+//			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
 			options.setErrorMessage("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
 			MultiServices.errorShutdown(options);
 		} else {
-			log.info("actual and expected uri are the same and equal '" + BASE_URI + expectedUri + "'");
+//			log.info("actual and expected uri are the same and equal '" + BASE_URI + expectedUri + "'");
 		}
 	}
 	
 	public static void assertCurrentUrlContainsStringItem(String stringItem) {
-		log.info("enter to function assertOnPageWithUrl with URL '" + stringItem + "'");
+//		log.info("enter to function assertOnPageWithUrl with URL '" + stringItem + "'");
 		options.setDriver(driver);
 		String actualUri = PageServices.getPageCurrentUrl(options);
 		if (actualUri.indexOf(stringItem) == -1 || actualUri.equals(null)) {
-			log.error("Page loaded with uri '" + actualUri + "' doesn't contain string item '" + stringItem + "'");
+//			log.error("Page loaded with uri '" + actualUri + "' doesn't contain string item '" + stringItem + "'");
 			options.setErrorMessage("Page loaded with uri '" + actualUri + "' doesn't contain string item '" + stringItem + "'");
 			MultiServices.errorShutdown(options);
 		} else {
-			log.info("actual uri is '" + actualUri + "' contains string item '" + stringItem + "'");
+//			log.info("actual uri is '" + actualUri + "' contains string item '" + stringItem + "'");
 		}
 	}
 	

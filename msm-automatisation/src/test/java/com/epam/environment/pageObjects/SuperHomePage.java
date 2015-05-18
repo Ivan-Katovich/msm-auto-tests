@@ -2,7 +2,6 @@ package com.epam.environment.pageObjects;
 
 import java.util.LinkedHashMap;
 
-import org.apache.log4j.Logger;
 
 import com.epam.environment.stepDefinition.Hooks;
 import com.epam.environment.stepDefinition.SuperHomePageSteps;
@@ -18,7 +17,6 @@ import cucumber.api.java.en.When;
 
 public class SuperHomePage extends Page{
 	
-private static final Logger log = Logger.getLogger(SuperHomePageSteps.class);
 	
 	//url items
 	protected static final String uri = "/beta/";

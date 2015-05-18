@@ -4,7 +4,7 @@ import java.awt.RenderingHints.Key;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,48 +19,48 @@ import com.epam.fw.services.WebElementsServices;
 
 public class FieldsShop extends Shop {
 	
-	private static final Logger log = Logger.getLogger(FieldsShop.class);
+//	private static final Logger log = Logger.getLogger(FieldsShop.class);
 	  
     public static void fillFieldByValue(MyElement myElement, String value) {
-    	log.info("enter to function fillFieldByValue '" + myElement.getName() + "'");
+//    	log.info("enter to function fillFieldByValue '" + myElement.getName() + "'");
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		options.setText(value);
     	if (WebElementsServices.waitElementIsVisible(options)) {
-			log.info("element is visible" );
+//			log.info("element is visible" );
 			switch (myElement.getType()) {
 			case "text":
 				FieldsServices.sendTextToField(options);
-				log.info("Text entered in the textfield");
+//				log.info("Text entered in the textfield");
 				break;
 			case "dropdown":
 				FieldsServices.selectDropdownMenu(options);
-				log.info("Dropdown option is selected");
+//				log.info("Dropdown option is selected");
 				break;
 			case "altdropdown":
 				FieldsServices.selectAltDropdownMenu(options);
-				log.info("Dropdown option is selected");
+//				log.info("Dropdown option is selected");
 				break;
 			case "button":
 				if (value == "click") {
 					WebElementsShop.clickOnElement(myElement);
 				}
-				log.info("Button is clicked");
+//				log.info("Button is clicked");
 				break;
 			case "radio":
 				FieldsServices.selectRadiobutton(options);
-				log.info("Radiobutton is selected");
+//				log.info("Radiobutton is selected");
 				break;
 			case "checkbox":
 				if (value == "click") {
 					WebElementsShop.clickOnElement(myElement);
 				}
-				log.info("Checkbox option is selected");
+//				log.info("Checkbox option is selected");
 				break;
 			case "datepicker":
 				WebElementsShop.clickOnElement(myElement);
 				FieldsServices.selectDate(options);
-				log.info("Datpicker option is selected");
+//				log.info("Datpicker option is selected");
 				break;
 			case "autocomplete":
 				FieldsServices.sendTextToField(options);
@@ -77,46 +77,46 @@ public class FieldsShop extends Shop {
 					e.printStackTrace();
 				}
 				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
-					log.error(" ===== in if");
+//					log.error(" ===== in if");
 					while (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
-						log.error(" ===== in while");
+//						log.error(" ===== in while");
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-						log.error(" ===== after sleep");
+//						log.error(" ===== after sleep");
 						WebElementsShop.clickOnElement(myElement);
-						log.error(" ===== after click");
+//						log.error(" ===== after click");
 					}
 				}
-				log.info("Text entered in the textfield");
+//				log.info("Text entered in the textfield");
 				break;	
 			default:
-				log.error("element is not field type" );
+//				log.error("element is not field type" );
 				options.setErrorMessage("element is not field type");
 				MultiServices.errorShutdown(options);
 			}
 		} else {
-			log.error("element is not visible" );
+//			log.error("element is not visible" );
 			options.setErrorMessage("element is not visible");
 			MultiServices.errorShutdown(options);
 		}
     }
     
     public static void fillFormByProfile(LinkedHashMap<MyElement, String> map) {
-    	log.info("enter to function fillFormByProfile");
+//    	log.info("enter to function fillFormByProfile");
     	options.setDriver(driver);
     	try {
     		for (MyElement element : map.keySet()) {
     			if (element == null || map.get(element) == null) {
-    				log.warn("Element or value is wrong");
+//    				log.warn("Element or value is wrong");
     			} else {
     				fillFieldByValue(element, map.get(element));
     			}
     		}
     	} catch (Exception e) {
-    		log.error("Something wrong with profile " + e.getClass());
+//    		log.error("Something wrong with profile " + e.getClass());
     		options.setErrorMessage("Something wrong with profile " + e.getClass());
     		MultiServices.errorShutdown(options);
     	}

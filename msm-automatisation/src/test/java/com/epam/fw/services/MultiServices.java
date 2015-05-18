@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -14,10 +14,10 @@ import com.epam.fw.object.Options;
 
 public class MultiServices {
 	
-	private static final Logger log = Logger.getLogger(MultiServices.class);
+//	private static final Logger log = Logger.getLogger(MultiServices.class);
 	
 	public static void errorShutdown(Options options) {
-		log.info("enter to function errorShutdown");
+//		log.info("enter to function errorShutdown");
 		getMyScreenshot(options);
 		org.junit.Assert.assertTrue(options.getErrorMessage(),false);
 //		options.getDriver().quit();
@@ -25,7 +25,7 @@ public class MultiServices {
 	}
 	
 	public static void getMyScreenshot(Options options) {
-		log.info("enter to function getScreenshot");
+//		log.info("enter to function getScreenshot");
 		SimpleDateFormat df = new SimpleDateFormat("(dd-MM-yyyy) hh-mm-ss SSS zzz");
 		Date date = new Date(); 
 		String formattedDate= df.format(date);
@@ -34,11 +34,11 @@ public class MultiServices {
 		File screen = new File(path);
 		try {
 			FileUtils.copyFile(file, screen);
-			log.error("You can see the screenshot with error by link " + screen.getAbsolutePath());
+//			log.error("You can see the screenshot with error by link " + screen.getAbsolutePath());
 			String errMes = options.getErrorMessage() + "\n You can see the screenshot with error by link \n" + screen.getAbsolutePath();
 			options.setErrorMessage(errMes);
 		} catch (IOException e) {
-			log.error("have an error with get screenshot" + e);
+//			log.error("have an error with get screenshot" + e);
 		}
 	}
 
