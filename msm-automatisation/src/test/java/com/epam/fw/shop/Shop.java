@@ -94,7 +94,7 @@ public abstract class Shop {
 			}
 			URL gridHost = new URL("http://"+gridURI+gridPort+"/wd/hub");
 //			log.error("http://"+gridURI+gridPort+"/wd/hub");
-			System.out.println("http://"+gridURI+gridPort+"/wd/hub");
+			System.out.println("\n Connected to " + BASE_URI + "using grid http://"+gridURI+gridPort+"/wd/hub \n");
 			
 			switch (driverType) {
 				case "Firefox":
