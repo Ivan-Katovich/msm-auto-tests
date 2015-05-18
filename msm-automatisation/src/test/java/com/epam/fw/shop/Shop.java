@@ -5,7 +5,7 @@ import static com.epam.fw.data.ConstantData.*;
 import java.net.URL;
 import java.util.LinkedHashMap;
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -159,8 +159,8 @@ public abstract class Shop {
 //    	log.info("enter to function getMyProfileByName");
     	options.setDriver(driver);
     	try {
-    		LinkedHashMap<MyElement, String> myPr = map.get(profileName);
-    		return myPr;
+//    		LinkedHashMap<MyElement, String> myPr = map.get(profileName);
+    		return map.get(profileName);
     	} catch (Exception e) {
 //    		log.error("Something wrong with profile map " + e.getClass());
     		options.setErrorMessage("Something wrong with profile map" + e.getClass());
