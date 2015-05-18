@@ -51,7 +51,7 @@ public class Hooks {
 	@Before
 	public void startTestComplect() {
 		try {
-			Page.startTestComplect(remoteChrome,tsmGrid);
+			Page.startTestComplect(remoteChrome,tsmJenkinsGrid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
