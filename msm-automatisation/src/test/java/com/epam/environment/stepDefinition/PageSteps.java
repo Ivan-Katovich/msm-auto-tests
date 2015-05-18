@@ -4,7 +4,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.sikuli.script.Pattern;
+//import org.sikuli.script.Pattern;
 
 import com.epam.environment.cucumberTests.FirstTestRunner;
 import com.epam.environment.pageObjects.Page;
