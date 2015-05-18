@@ -9,7 +9,6 @@ import org.sikuli.script.Pattern;
 import com.epam.environment.cucumberTests.FirstTestRunner;
 import com.epam.environment.pageObjects.Page;
 import com.epam.fw.object.MyElement;
-import com.epam.fw.object.MyImage;
 import com.epam.fw.shop.PageShop;
 
 import cucumber.api.java.en.When;
