@@ -63,15 +63,15 @@ public class PageShop extends Shop{
 	}
 	
 	public static void assertOnPageWithUrl(String expectedUri) {
-		log.info("enter to function assertOnPageWithUrl with URL '" + BASE_URI + expectedUri + "'");
+		log.info("enter to function assertOnPageWithUrl with URL '" + expectedUri + "'");
 		options.setDriver(driver);
 		String actualUri = PageServices.getPageCurrentUrl(options);
-		if (actualUri.indexOf(BASE_URI+expectedUri) == -1 || actualUri.equals(null)) {
-			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
-			options.setErrorMessage("Page loaded with uri '" + actualUri + "' but expected uri was '" + BASE_URI + expectedUri + "'");
+		if (actualUri.indexOf(expectedUri) == -1 || actualUri.equals(null)) {
+			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + expectedUri + "'");
+			options.setErrorMessage("Page loaded with uri '" + actualUri + "' but expected uri was '" + expectedUri + "'");
 			MultiServices.errorShutdown(options);
 		} else {
-			log.info("actual and expected uri are the same and equal '" + BASE_URI + expectedUri + "'");
+			log.info("actual and expected uri are the same and equal '" + expectedUri + "'");
 		}
 	}
 	
@@ -86,6 +86,19 @@ public class PageShop extends Shop{
 		} else {
 			log.info("actual uri is '" + actualUri + "' contains string item '" + stringItem + "'");
 		}
+	}
+	
+	public static void assertURLChange() {
+		log.info("enter to function assertURLChange");
+		options.setDriver(driver);
+		if (!PageServices.isUriChange(options)) {
+			log.error("URL is not changed over time");
+			options.setErrorMessage("URL is not changed over time");
+			MultiServices.errorShutdown(options);
+		} else {
+			log.info("URL is changed");
+		}
+	    	
 	}
 	
 //	public static Page goToPage(Options options) {

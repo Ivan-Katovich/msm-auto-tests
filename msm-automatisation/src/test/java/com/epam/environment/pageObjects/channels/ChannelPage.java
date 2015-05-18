@@ -4,13 +4,14 @@ import java.util.LinkedHashMap;
 
 import com.epam.environment.pageObjects.Page;
 import com.epam.fw.object.MyElement;
+import com.epam.fw.shop.Shop;
 import com.epam.fw.shop.WebElementsShop;
 
 import cucumber.api.java.en.When;
 
 public class ChannelPage extends Page{
 	
-	protected static final LinkedHashMap<String, MyElement> superHomePageElements = new LinkedHashMap<String, MyElement>(){{
+	protected static final LinkedHashMap<String, MyElement> channelPageElements = new LinkedHashMap<String, MyElement>(){{
 		//multi channel elements
 		put("searchProgressCircle", new MyElement("//*[@class='round-progress']", "webElement"));
 	}};
@@ -20,8 +21,8 @@ public class ChannelPage extends Page{
 		
 		
 	public static void waitForProviders() {
-		WebElementsShop.assertElementDynamicTextBecame(searchProgressCircle, "100 %");
-		   // see whi it shows '' (empty)
+		WebElementsShop.assertElementNotVisible(Shop.getMyElementByName(channelPageElements, "searchProgressCircle"));
+		   // see why it shows '' (empty)
 	}
 
 }

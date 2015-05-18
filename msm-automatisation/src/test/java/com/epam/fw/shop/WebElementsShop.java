@@ -30,6 +30,19 @@ public class WebElementsShop extends Shop{
 		}
 	}
 	
+	public static void assertElementNotVisible(MyElement myElement) {
+		log.info("enter to function assertElementVisible with element '" + myElement.getName() + "'");
+		options.setDriver(driver);
+		options.setMyElement(myElement);
+		if (WebElementsServices.waitElementIsNotVisible(options)) {
+			log.info("element '" + myElement.getName() + "' is not visible" );
+		} else {
+			log.error("element '" + myElement.getName() + "' is still visible shutdown" );
+			options.setErrorMessage("element '" + myElement.getName() + "' is still visible shutdown" );
+			MultiServices.errorShutdown(options);
+		}
+	}
+	
 	public static void assertElementPresent(MyElement myElement) {
 		log.info("enter to function assertElementPresent with element '" + myElement.getName() + "'");
 		options.setDriver(driver);
@@ -402,6 +415,38 @@ public class WebElementsShop extends Shop{
 			}
 		}
     }
+    
+    public static MyElement getMyElementFromGroup(MyElement myElement, int number) {
+    	log.info("enter to function getMyElementFromGroup with element '" + myElement.getName() + "'");
+    	options.setDriver(driver);
+		options.setMyElement(myElement);
+    	if (!myElement.getType().equals("groupOfElements")) {
+    		log.error("Element '" + myElement.getName() + "' is not groupOfElements type it is '" +myElement.getType() + "'");
+    		options.setErrorMessage("Element '" + myElement.getName() + "' is not groupOfElements type it is '" +myElement.getType() + "'");
+			MultiServices.errorShutdown(options);
+			return null;
+    	} else {
+    		if (WebElementsServices.getElementsNumber(options)<=number) {
+    			log.error("Group of elements '" + myElement.getName() + "' has less than '" + number + "' elements");
+        		options.setErrorMessage("Group of elements '" + myElement.getName() + "' has less than '" + number + "' elements");
+    			MultiServices.errorShutdown(options);
+    			return null;
+    		} else {
+    			MyElement temp = new MyElement("(" + myElement.getXpath() + ")[" + number + "]", "webElement");
+    			options.setMyElement(temp);
+    			if (!WebElementsServices.waitElementIsVisible(options)) {
+    				log.error("element '" + myElement.getName() + "' is not visible shutdown" );
+    				options.setErrorMessage("element '" + myElement.getName() + "' is not visible shutdown" );
+    				MultiServices.errorShutdown(options);
+    				return null;
+    			} else {
+    				return temp;
+    			}
+    		}
+    	}
+    	
+    }
+    
  
 
 }

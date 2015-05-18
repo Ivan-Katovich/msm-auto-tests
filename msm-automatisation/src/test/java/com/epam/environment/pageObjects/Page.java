@@ -22,5 +22,13 @@ public class Page {
 	public static void waitForPageAbsolutelyLoad() {
 		PageShop.waitForPage();
 	}
+	
+	public static void assertOnCarHirePage(String url) {
+		PageShop.assertOnPageWithUrl(url);
+	}
+	
+	public static void waitForUrlChange() {
+		PageShop.assertURLChange();
+	}
 
 }

@@ -169,6 +169,11 @@ public class WebElementsServices {
     				return true;
     			} else {
     				log.warn("element '" + options.getMyElement().getName() + "' is displayed now ");
+    				try {
+						Thread.sleep(pooling);
+					} catch (InterruptedException e) {
+						log.error(e.getClass());
+					}
     				while (element.isDisplayed() && time <= endTime) {
     					log.info(time + " lower " + endTime );
     					try {
@@ -342,5 +347,6 @@ public class WebElementsServices {
     		return false;
     	}
     }
+    
      
 }
