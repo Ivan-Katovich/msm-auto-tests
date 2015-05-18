@@ -75,5 +75,34 @@ public class PageServices {
 			return null;
 		}
 	}
+	
+	public static boolean isUriChange(Options options) {
+		log.info("enter to function isUriChange");
+		String oldUri = options.getDriver().getCurrentUrl();
+		long time = new Date().getTime();
+    	long endTime = time+options.getTimeout();
+    	int pooling = options.getPooling(); 
+    	
+    	System.out.println(time + " lower " + endTime);
+    	do {
+    		try {
+				Thread.sleep(pooling);
+			} catch (InterruptedException e) {
+				log.error(e.getClass());
+			}
+    		time = new Date().getTime();
+    		System.out.println(time + " lower " + endTime);
+    	} while (oldUri.equals(options.getDriver().getCurrentUrl()) && time <= endTime);
+    	System.out.println(oldUri + " ======= " + options.getDriver().getCurrentUrl());
+    	System.out.println(time + " lower " + endTime);
+    	if (time >= endTime) {
+			log.error("URL is not changed ");
+			return false;
+		} else {
+			log.info("URL is changed");
+			return true;
+		}
+    	
+	}
 
 }

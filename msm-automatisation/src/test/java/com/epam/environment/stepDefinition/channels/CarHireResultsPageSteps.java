@@ -19,6 +19,18 @@ public class CarHireResultsPageSteps {
 	public void assertOnCarHirePage() {
 		CarHireResultsPage.assertOnCarHirePage();
 	}
+	
+	@Then("^I click on the '(.+)'(?:st|th|nd) element of '(.+)' group$")
+	public void clickOnCarHireResultsMultiElement(String number,String elementName) {
+		int i = Integer.parseInt(number);
+		CarHireResultsPage.clickOnCarHireResultsMultiElement(elementName,i);
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 		
 		
 	
