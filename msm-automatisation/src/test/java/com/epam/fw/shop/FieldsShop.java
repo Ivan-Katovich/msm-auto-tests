@@ -77,17 +77,17 @@ public class FieldsShop extends Shop {
 					e.printStackTrace();
 				}
 				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
-					log.error(" ===== in if");
+//					log.error(" ===== in if");
 					while (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
-						log.error(" ===== in while");
+//						log.error(" ===== in while");
 						try {
 							Thread.sleep(200);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-						log.error(" ===== after sleep");
+//						log.error(" ===== after sleep");
 						WebElementsShop.clickOnElement(myElement);
-						log.error(" ===== after click");
+//						log.error(" ===== after click");
 					}
 				}
 				log.info("Text entered in the textfield");

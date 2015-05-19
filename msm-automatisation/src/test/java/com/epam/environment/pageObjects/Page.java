@@ -30,5 +30,9 @@ public class Page {
 	public static void waitForUrlChange() {
 		PageShop.assertURLChange();
 	}
+	
+	public static void switchHandle() {
+		PageShop.switchToAnotherHandle();
+	}
 
 }

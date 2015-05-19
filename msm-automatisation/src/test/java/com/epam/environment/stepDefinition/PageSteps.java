@@ -27,6 +27,11 @@ public class PageSteps {
 		Page.waitForUrlChange();
 	}
 	
+	@When("^I switch to another handle$")
+	public void switchHandle() {
+		Page.switchHandle();
+	}
+	
 	@Then("^I am taken to the page contains URL '(.+)'$")
 	public void assertOnPageWithURL(String url) {
 		Page.assertOnCarHirePage(url);
