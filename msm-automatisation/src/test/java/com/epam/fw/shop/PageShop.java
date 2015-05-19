@@ -1,5 +1,7 @@
 package com.epam.fw.shop;
 
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -101,53 +103,22 @@ public class PageShop extends Shop{
 	    	
 	}
 	
-//	public static Page goToPage(Options options) {
-//		log.info("enter to function goToPage in shop");
-//		Page page;
-//		try {
-//			switch (options.getUri()) {
-//			case MAIN_PAGE_URI:
-//				options.getDriver().get(MAIN_PAGE_URI);
-//				page = new MainPage(options.getDriver());
-//				break;
-//			case CATALOG_AND_PRICE_PAGE_URI:
-//				options.getDriver().get(CATALOG_AND_PRICE_PAGE_URI);
-//				page = new CatalogPage(options.getDriver());
-//				break;
-//			case AUTO_PAGE_URI:
-//				options.getDriver().get(AUTO_PAGE_URI);
-//				page = new AutoPage(options.getDriver());
-//				break;
-//			case AUTO_FLEA_MAEKET_PAGE_URI:
-//				options.getDriver().get(AUTO_FLEA_MAEKET_PAGE_URI);
-//				page = new AutoFleaMarketPage(options.getDriver());
-//				break;
-//			case PEOPLE_PAGE_URI:
-//				options.getDriver().get(PEOPLE_PAGE_URI);
-//				page = new PeoplePage(options.getDriver());
-//				break;
-//			case REALTY_URI:
-//				options.getDriver().get(REALTY_URI);
-//				page = new RealtyPage(options.getDriver());
-//				break;
-//			case FLEA_MAEKET_PAGE_URI:
-//				options.getDriver().get(FLEA_MAEKET_PAGE_URI);
-//				page = new FleaMarketPage(options.getDriver());
-//				break;
-//			case FORUM_PAGE_URI:
-//				options.getDriver().get(FORUM_PAGE_URI);
-//				page = new ForumPage(options.getDriver());
-//				break;
-//			default:
-//				page = null;
-//			}
-//			return page;
-//		} catch (Exception e) {
-//			log.error("cant get uri");
-//			options.getDriver().quit();
-//			return null;
-//		}
-//	}
+	public static void switchToAnotherHandle() {
+		log.info("enter to function switchToAnotherHandle");
+		options.setDriver(driver);
+		try {
+			for (String winHandle : driver.getWindowHandles()) {
+			    driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's your newly opened window)
+			}
+		} catch (Exception e) {
+			log.error("Can't switch to another handle");
+			options.setErrorMessage("Can't switch to another handle");
+			MultiServices.errorShutdown(options);
+		}
+	}
+	
+	
+	
 	
 	
 
