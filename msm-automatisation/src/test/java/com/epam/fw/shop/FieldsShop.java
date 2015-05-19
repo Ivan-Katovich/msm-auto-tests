@@ -1,6 +1,7 @@
 package com.epam.fw.shop;
 
 import java.awt.RenderingHints.Key;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -63,31 +64,49 @@ public class FieldsShop extends Shop {
 				log.info("Datpicker option is selected");
 				break;
 			case "autocomplete":
+				long time = new Date().getTime();
+		    	long endTime = time+options.getTimeout();
+		    	int pooling = options.getPooling();
+		    	
 				FieldsServices.sendTextToField(options);
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				
+				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size() == 0) {
+//					log.error(" ===== in if");
+					do {
+//						log.error(" ===== in while");
+						try {
+							Thread.sleep(pooling);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						time = new Date().getTime();
+					} while (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size() == 0 && time <= endTime);
+					if (time >= endTime) {
+						log.error("autocomplete dropdown is not defined" );
+						options.setErrorMessage("autocomplete dropdown is not defined");
+						MultiServices.errorShutdown(options);
+					}
 				}
 				driver.findElement(options.getSelector()).sendKeys(Keys.ENTER);
 				// for TSM project needs to check on another
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
 				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
 //					log.error(" ===== in if");
-					while (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0) {
+					do {
 //						log.error(" ===== in while");
 						try {
-							Thread.sleep(200);
+							Thread.sleep(pooling);
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
 //						log.error(" ===== after sleep");
 						WebElementsShop.clickOnElement(myElement);
 //						log.error(" ===== after click");
+						time = new Date().getTime();
+					} while (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size()!=0);
+					if (time >= endTime) {
+						log.error("autocomplete dropdown is not closed" );
+						options.setErrorMessage("autocomplete dropdown is not closed");
+						MultiServices.errorShutdown(options);
 					}
 				}
 				log.info("Text entered in the textfield");

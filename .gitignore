@@ -2,6 +2,7 @@ msm-automatisation/.settings/
 msm-automatisation/.idea/
 msm-automatisation/target/
 msm-automatisation/reports/
+msm-automatisation/surefire/
 msm-automatisation/src/test/resources/screenshots/
 .classpath
 msm-automatisation/MoneySuperMarket.iml
