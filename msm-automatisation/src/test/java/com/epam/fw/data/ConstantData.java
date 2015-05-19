@@ -10,7 +10,7 @@ public final class ConstantData {
 //	private static ResourceBundle dataFile = ResourceBundle.getBundle("prop");
 	
 	//uri
-	public static final String BASE_URI = "http://www.test1-cms.gb.travelsupermarket.com";
+	public static final String BASE_URI = "http://www.sit1.gb.travelsupermarket.com";
 	
 	//seleniun grid
 	public static final String SELENIUM_HOST_WORKST = "10.6.205.25";
