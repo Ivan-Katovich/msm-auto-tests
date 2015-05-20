@@ -69,7 +69,11 @@ public class FieldsShop extends Shop {
 		    	int pooling = options.getPooling();
 		    	
 				FieldsServices.sendTextToField(options);
-				
+//				try {
+//					Thread.sleep(200);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
 				if (driver.findElements(By.xpath(myElement.getXpath()+"/following-sibling::div")).size() == 0) {
 //					log.error(" ===== in if");
 					do {
