@@ -91,11 +91,11 @@ public class PageServices {
 				log.error(e.getClass());
 			}
     		time = new Date().getTime();
-    		System.out.println(time + " lower " + endTime);
-    		System.out.println(oldUri + " ======= " + options.getDriver().getCurrentUrl());
+//    		System.out.println(time + " lower " + endTime);
+//    		System.out.println(oldUri + " ======= " + options.getDriver().getCurrentUrl());
     	} while (oldUri.equals(options.getDriver().getCurrentUrl()) && time <= endTime);
-    	System.out.println(oldUri + " ======= " + options.getDriver().getCurrentUrl());
-    	System.out.println(time + " lower " + endTime);
+//    	System.out.println(oldUri + " ======= " + options.getDriver().getCurrentUrl());
+//    	System.out.println(time + " lower " + endTime);
     	if (time >= endTime) {
 			log.error("URL is not changed ");
 			return false;
