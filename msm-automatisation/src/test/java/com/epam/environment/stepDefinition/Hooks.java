@@ -51,7 +51,7 @@ public class Hooks {
 	@Before
 	public void startTestComplect() {
 		try {
-			Page.startTestComplect(remoteFirefox, tsmGrid);
+			Page.startTestComplect(chrome);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
