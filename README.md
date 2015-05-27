@@ -1,19 +1,25 @@
-newsoul-selenium-framework
+webdriver-framework
 ==========================
 
-Test automation framework based on WebDriver \n
+Test automation framework based on WebDriver
 
-language:\n
-java 1.7\n
+language:
 
-project builder :\n
-maven 3.2.3 \n
+java 1.7
 
-additional libraries :\n
-junit 4.11 \n
-sikuli-script 1.0.1 \n
-selenium-java 2.42.2 \n
-log4j 1.9.4 \n
+project builder :
+
+maven 
+
+libraries :
+
+junit 4.12 
+
+sikuli-script 1.0.1 //not used now
+
+cucumber 
+
+gherkin
 
 
 
