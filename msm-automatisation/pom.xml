@@ -87,8 +87,7 @@
 				<version>2.18.1</version>
 				<executions>
 					<execution>
-						<id>acceptance-test</id>
-						<phase>integration-test</phase>
+						<id>default-test</id>
 						<goals>
 							<goal>test</goal>
 						</goals>
