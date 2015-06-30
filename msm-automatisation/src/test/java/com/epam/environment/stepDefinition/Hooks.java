@@ -51,7 +51,7 @@ public class Hooks {
 	@Before
 	public void startTestComplect() {
 		try {
-			Page.startTestComplect(chrome);
+			Page.startTestComplect(remoteChrome,localGrid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
