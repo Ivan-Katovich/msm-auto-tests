@@ -87,8 +87,7 @@
 				<version>2.18.1</version>
 				<executions>
 					<execution>
-						<id>acceptance-test</id>
-						<phase>integration-test</phase>
+						<id>default-test</id>
 						<goals>
 							<goal>test</goal>
 						</goals>
@@ -100,7 +99,7 @@
 							<argLine>-Xmx1024m</argLine>
 							<argLine>-XX:MaxPermSize=256m</argLine>
 							<argLine>-Dfile.encoding=UTF-8</argLine>
-							<useFile>false</useFile>
+							<useFile>true</useFile>
 							<includes>
 								<include>**/*Test*.java</include>
 							</includes>
